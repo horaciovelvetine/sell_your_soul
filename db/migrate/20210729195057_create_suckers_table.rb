@@ -7,7 +7,7 @@ class CreateSuckersTable < ActiveRecord::Migration
       t.string "maiden_name"
       t.string "pseudonym"
       t.string "alias"
-      t.string "user_name"
+      t.string "username"
       t.string "password_digest"
       t.string "cell_phone_number"
       t.string "home_phone_number"
