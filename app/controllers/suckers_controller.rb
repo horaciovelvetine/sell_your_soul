@@ -22,7 +22,6 @@ class SuckersController < ApplicationController
     erb :"/suckers/show.html"
   end
 
-
   # GET: /suckers/5/edit
   # Gets the edit form from views
   get "/suckers/:id/edit" do
@@ -30,7 +29,35 @@ class SuckersController < ApplicationController
   end
 
   # PATCH: /suckers/5
+  #called by edit form in order to actually execute the action
   patch "/suckers/:id" do
+    if logged_in?
+
+      #Validates content has been added to the suckers.
+      if params[:TEMPORARY] == ""
+        #empty go here
+        redirect to "/suckers/#{params[:id]}/edit"
+      else
+        #check for access to profile
+        @sucker = Sucker.find_by_id(params[:id])
+        if @sucker && @sucker.username == current_user
+
+          if @sucker.update(content: params[:content])
+            redirect to "/suckers/#{@sucker.id}"
+          else
+            redirect to "/suckers/#{@sucker.id}/edit"
+          end
+        else
+          redirect to '/suckers'
+        end
+      end
+    else
+      redirect to '/login'
+    end
+    
+    
+    
+    
     redirect "/suckers/:id"
   end
 
@@ -39,11 +66,18 @@ class SuckersController < ApplicationController
     redirect "/suckers"
   end
 
+
+
+
+################################################################################
+################################################################################
+                            #LOGIN & LOGOUT PATHS
   get '/login' do
     if !logged_in?
-      erb :'users/login'
+      erb :'suckers/login'
     else
-      redirect to '/tweets'
+
+      redirect to '/suckers/#{:id}'
     end
   end
 
@@ -51,7 +85,7 @@ class SuckersController < ApplicationController
   user = User.find_by(:username => params[:username])
   if user && user.authenticate(params[:password])
     session[:user_id] = user.id
-    redirect to "/tweets"
+    redirect to "/TEMPORARY"
   else
     redirect to '/signup'
   end
