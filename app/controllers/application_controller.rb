@@ -14,11 +14,11 @@ class ApplicationController < ApplicationController
   end
 
     def logged_in?
-      !!current_user
+      !!current_sucker
     end
 
-    def current_user
-      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+    def current_sucker
+      @current_sucker ||= Sucker.find_by(id: session[:sucker_id]) if session[:sucker_id]
     end
   end
 end
