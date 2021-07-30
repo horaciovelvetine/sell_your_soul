@@ -5,26 +5,65 @@ class ApplicationController < Sinatra::Base
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
+    enable :sessions
+    set :session_secret, "ted cruz is the zodiac killer."
+    use Rack::Flash
   end
 
 
-  ## ACTING-HOMEPAGE 
+  ## GETS The homepage
   get "/" do
     erb :index
   end
+  
+  ## GETS (by frist double checking if you are already logged_in) Either a signup page, or directs back to sucker profile
+  get '/signup' do
+    if logged_in?
+      @sucker = current_sucker 
+      redirect "/sucker/#{@sucker.id}"
+    else  
+      erb :'sucker/create.html.erb'
+    end 
+  end 
+  
+  ## GETS the login page if not logged_in? already
+  get '/login' do
+    if logged_in?
+      @sucker = current_sucker 
+      redirect "/sucker/#{@sucker.id}"
+    else  
+      erb :'sucker/login'
+    end 
+  end 
 
-  get "signup" do
+  ## POST(s) the information from the login form, and redirects now signed in user to thier home page
+  post '/login' do
     
-    erb :signup
+    @sucker = Sucker.find_by(username: params[:username])
+    
+    if @sucker && @sucker.authenticate(params[:password])
+      session[:user_id] = @sucker.id 
+      redirect "/sucker/#{@sucker.id}"
+    else 
+      flash[:message] = "Sorry, the username or password do not match. Please try agin."
+      redirect '/login'
+    end
   end
+
+
+
+
+
+  
+  helpers do
 
     def logged_in?
-    !!current_sucker
-  end
+      !!current_sucker
+    end
 
-  def current_sucker
-    @current_sucker ||= Sucker.find_by(id: session[:sucker_id]) if session[:sucker_id]
+    def current_sucker
+      @current_sucker ||= Sucker.find_by(id: session[:sucker_id]) if session[:sucker_id]
+    end
   end
 end
 
-end
