@@ -31,7 +31,6 @@ class SuckersController < ApplicationController
       redirect '/login'
     end
 
-    
     @sucker = current_sucker
     if params[:id] != @sucker.id
       flash[:message] = "Sorry, you can only edit your own profile!"
@@ -62,7 +61,8 @@ class SuckersController < ApplicationController
       flash[:message] = "Sorry, you can't delete your profile with a negative balance!"
       redirect "/sucker/#{@sucker.id}"
     elsif @sucker.balance > 0
-      
+      amount = @sucker.balance.to_s
+      closing_transaction = Transaction.create(amount)
       if params[:id] != @sucker.id
         flash[:message] = "Sorry, profiles can only be deleted by the authenticated user!"
         redirect "/sucker/#{@sucker.id}"
