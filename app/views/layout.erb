@@ -19,7 +19,8 @@
         <%= yield %>
 
       <footer class="branding">
-        <small>&copy; 2021 <strong>Sys.io, don't try <a href="https://www.copyright.gov/title17/">us</a> bucko</strong></small>
+        <small>&copy; 2021 <strong>Sys.io, don't try <a href="https://www.copyright.gov/title17/">us</a> bucko</strong></small><br>
+        <small>Ruby: "<%= RUBY_VERSION %>" | ENV: <%= ENV["RACK_ENV"] %> <br> Server: "<%= @env["SERVER_SOFTWARE"] %>" <br> Port: "<%= @env["SERVER_PORT"] %>"</small>
       </footer>
     </div>
 
