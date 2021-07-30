@@ -1,6 +1,6 @@
 source 'https://rubygems.org/'
 
-gemspec
+
 
 gem 'active_model_serializers'
 gem 'sinatra'

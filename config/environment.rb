@@ -5,4 +5,8 @@ Bundler.require(:default, ENV['SINATRA_ENV'])
 
 ActiveRecord::Base.establish_connection(ENV['SINATRA_ENV'].to_sym)
 
-require_all 'app'
+
+require './app/controllers/application_controller'
+# require_all 'controllers'
+# require_all 'models'
+# require_all 'views'

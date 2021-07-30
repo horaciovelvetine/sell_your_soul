@@ -1,4 +1,4 @@
-class ApplicationController < ApplicationController
+class ApplicationController < Sinatra::Base
 
     configure do
     #=> ask devon!
@@ -6,7 +6,6 @@ class ApplicationController < ApplicationController
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "ted cruz is the zodiac killer."
-  end
 
   # GET: /domain
   get "/" do
