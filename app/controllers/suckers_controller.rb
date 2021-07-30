@@ -1,37 +1,78 @@
 class SuckersController < ApplicationController
 
-  # GET: /suckers
-  get "/suckers" do
-    erb :"/suckers/index.html"
+
+  ## GETS: Checks for user logged in, then directs the user to either a login or sends them to thier profile
+  ## Note this is slightly changed because no public DB view of all the users needs to be availible
+  get '/suckers' do 
+    
+    if !logged_in?
+      redirect '/login'
+    end
+      
+    @sucker = current_sucker
+    redirect '/sucker/#{@sucker.id}'
+  end
+  
+  ## GETS: profile page for user.
+  get '/sucker/:id' do
+
+    if !logged_in? 
+      redirect '/login' 
+    end 
+
+    @sucker = Sucker.find_by_id(params[:id])    
+    erb :'/suckers/show'
   end
 
-  # GET: /suckers/new
-  get "/suckers/new" do
-    erb :"/suckers/new.html"
+  ## GETS: The form to edit a specific user
+  get '/sucker/:id/edit' do 
+    
+    if !logged_in?
+      redirect '/login'
+    end
+
+    
+    @sucker = current_sucker
+    if params[:id] != @sucker.id
+      flash[:message] = "Sorry, you can only edit your own profile!"
+      redirect "/sucker/#{@sucker.id}"
+    else
+      erb :'suckers/edit_sucker'
+    end
   end
 
-  # POST: /suckers
-  post "/suckers" do
-    redirect "/suckers"
+
+  ## PATCHES: updates a sucker profile. 
+  patch '/sucker/:id' do 
+      @sucker = current_sucker  
+      @sucker.update(params[:sucker])
+      flash[:message] = "Successfully updated profile!"
+      redirect "/sucker/#{@sucker.id}"
   end
 
-  # GET: /suckers/5
-  get "/suckers/:id" do
-    erb :"/suckers/show.html"
-  end
-
-  # GET: /suckers/5/edit
-  get "/suckers/:id/edit" do
-    erb :"/suckers/edit.html"
-  end
-
-  # PATCH: /suckers/5
-  patch "/suckers/:id" do
-    redirect "/suckers/:id"
-  end
-
-  # DELETE: /suckers/5/delete
-  delete "/suckers/:id/delete" do
-    redirect "/suckers"
+  ## DELETES: user profile,
+  delete '/sucker/:id/delete' do
+    
+    if !logged_in?
+        redirect '/login'
+    end
+    
+    @sucker = current_sucker
+    if @sucker.balance < 0
+      flash[:message] = "Sorry, you can't delete your profile with a negative balance!"
+      redirect "/sucker/#{@sucker.id}"
+    elsif @sucker.balance > 0
+      
+      if params[:id] != @sucker.id
+        flash[:message] = "Sorry, profiles can only be deleted by the authenticated user!"
+        redirect "/sucker/#{@sucker.id}"
+      else
+        spam = spam.create(params[:sucker])
+        session.clear
+        @sucker.destroy 
+        flash[:message] = "We're so sorry to see you go! But happy with the oppurtunity to earn your business back. Check your email(s) for a special offer." 
+        redirect '/'
+      end
+    end
   end
 end
