@@ -28,6 +28,7 @@ class CreateSuckersTable < ActiveRecord::Migration
       t.string "political_affiliation"
       t.string "belief_religion"
       t.string "interests"
+      t.real "balance"
 
       t.timestamps null: false
     end
