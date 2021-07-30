@@ -35,6 +35,15 @@ class ApplicationController < Sinatra::Base
       erb :'sucker/login'
     end 
   end 
+  ## GETS a now logged out version of the homepage
+  get '/logout' do
+    if logged_in?
+      session.destroy
+      redirect to '/login'
+    else
+      redirect to '/'
+    end
+  end
 
   ## POST(s) the information from the login form, and redirects now signed in user to thier home page
   post '/login' do
@@ -48,13 +57,10 @@ class ApplicationController < Sinatra::Base
       flash[:message] = "Sorry, the username or password do not match. Please try agin."
       redirect '/login'
     end
+
   end
 
 
-
-
-
-  
   helpers do
 
     def logged_in?
