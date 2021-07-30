@@ -23,10 +23,14 @@ class ApplicationController < Sinatra::Base
       @sucker = current_sucker 
       redirect "/sucker/#{@sucker.id}"
     else  
-      erb :'sucker/create.html.erb'
+      erb :'sucker/create'
     end 
   end 
   
+  get '/termsandconditions' do
+    erb :terms
+  end
+
   ## GETS the login page if not logged_in? already
   get '/login' do
     if logged_in?
