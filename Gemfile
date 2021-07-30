@@ -18,3 +18,10 @@ gem "tux"
 group :development do
   gem "fakefs", "~> 0.4"
 end
+
+group :test do
+  gem 'rspec'
+  gem 'capybara'
+  gem 'rack-test'
+  gem 'database_cleaner'
+end
