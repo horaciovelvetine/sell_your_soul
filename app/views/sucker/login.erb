@@ -1,1 +1,46 @@
-##Page should display a form for the user to log in to an already existing account
+<div class="container">
+  <header><img src="images/Stupid Simple Logo.svg" class =img-responsive main-image" alt="Logo for SYS.io"></header>
+  <div class="col-md-8 col-md-offset-2">
+    <h2>Login</h2>
+
+    <div class="content">
+      <form action="/login" method="POST">
+      <input type="text" name="username" id="username" placeholder="Username">
+      <input type="password" name="password" id="password" placeholder="Password">
+      <button type="submit">Log In</button>
+    </div>
+
+  <div class="sidebar">
+    <h3>Navigation</h3>
+        <li><b><a href="/">Home</a></b> </li>
+        <li><b><a href="/corporation/index">Our Corporate Partners</a></b></li>
+        <li><b><a href="/sucker/<%= @sucker.id %>/">Go to Profile</a></b></li>
+        <li><b><a href="/sucker/<%= @sucker.id %>/edit">Edit Profile</a></b></li>
+        <li><b><a href="sucker/login">Login</a></b></li>
+        <li><b><a href="sucker/logout">Logout</a></b></li>
+      </ul>
+  </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Actor Login</h2>
+<form action="/login" method="POST">
+  <input type="text" name="email" id="email" placeholder="Email">
+  <input type="password" name="password" id="password" placeholder="Password">
+<button type="submit">Log In</button>
+</form>
+<br>
+<a href="/signup">First time? Create your account here.</a>
