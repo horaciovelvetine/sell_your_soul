@@ -1,1 +1,27 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<div class="container">
+  <header><img src="images/Stupid Simple Logo.svg" class =img-responsive main-image" alt="Logo for SYS.io"></header>
+  <div class="col-md-8 col-md-offset-2">
+    <h2>Create a new User</h2>
+
+    <div class="content">
+    <p>Please fill out the form below as completely as you can! The more complete the data provided, the more companies will pay to have that information available</p>
+      <form action="/signup" method="POST">
+      <input type="text" name="name" id="name" placeholder="Full Name" required><br>
+
+      <br>
+      <input type="submit" value="Create Account">
+</form>
+    </div>
+
+  <div class="sidebar">
+    <h3>Navigation</h3>
+        <li><b><a href="/">Home</a></b> </li>
+        <li><b><a href="/login">Login</a></b> </li>
+        <li><b><a href="/logout">Logout</a></b> </li>
+        <li><b><a href="/sucker/:id/edit">Edit</a></b></li>
+        <li><b><a href="/corporation/index">Our Corporate Partners</a></b></li>
+      </ul>
+  </div>
+
+  </div>
+</div>
