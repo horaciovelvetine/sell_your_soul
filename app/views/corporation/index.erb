@@ -1,1 +1,32 @@
-<h1>This is the Model's index page.</h1>
+<div class="container">
+  <header><img src="images/Stupid Simple Logo.svg" class =img-responsive main-image" alt="Logo for SYS.io"></header>
+  <div class="col-md-8 col-md-offset-2">
+    <h2>Our Corporate Partners</h2>
+
+    <div class="content">
+      <p>Each and every company on the followiung list has been individually vetted by our team to ensure their integrity and commitment to responsible data exploitation. They've committed to strict usage parameters, and negotiated fair rates for our customers, so that you can start making money off yourself today!</p><br><br>
+
+      <h6><i>Our Esteemed Partners</i></h6>
+      <% @corporations.each_with_index do |corporation, index| %>
+        <li><%= index %>.<a href="/corporation/<%corporation.id%>"><%= corporation.name%></a></li><br>
+      <% end %>
+
+  <div class="sidebar">
+    <h3>Navigation</h3>
+        <li><b><a href="/">Home</a></b> </li>
+        <li><b><a href="/corporation/index">Our Corporate Partners</a></b></li>
+        <li><b><a href="/sucker/<%= @sucker.id %>/">Go to Profile</a></b></li>
+        <li><b><a href="/sucker/<%= @sucker.id %>/edit">Edit Profile</a></b></li>
+        <li><b><a href="/login">Login</a></b> </li>
+        <li><b><a href="/logout">Logout</a></b> </li>
+      </ul>
+  </div>
+
+  </div>
+</div>
+
+<% @corporations.each do |corporation| %>
+  <div>
+    <%= corporation.name %>
+  </div>
+<% end %>
