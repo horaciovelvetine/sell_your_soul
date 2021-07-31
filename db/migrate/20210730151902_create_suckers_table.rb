@@ -18,9 +18,9 @@ class CreateSuckersTable < ActiveRecord::Migration[6.1]
       t.string "home_phone_number"
       
       #ADDRESS
-      t.string "address_1"
-      t.string "address_2"
-      t.string "PO_Box"
+      t.string "address_one"
+      t.string "address_two"
+      t.string "P_O_Box"
       
       #EMAILS
       t.string "primary_email"
@@ -35,8 +35,8 @@ class CreateSuckersTable < ActiveRecord::Migration[6.1]
       
       #BANK RECOVERY 
       t.string "relationship_status"
-      t.string "favorite_pet"
-      t.string "additional_pet"
+      t.string "employment_status"
+      t.string "employer"
       t.string "catch_phrase"
       
       #JUST IN CASE THEY FEEL STRONGLY
@@ -45,8 +45,8 @@ class CreateSuckersTable < ActiveRecord::Migration[6.1]
       t.string "interests"
 
       #IN CASE WE MISSED IT
-      t.text "additional_details_1"
-      t.text "additional_details_2"
+      t.text "additional_details_one"
+      t.text "additional_details_two"
       
       #BEHIND THE SCENES
       t.real "balance"
