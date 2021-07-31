@@ -6,7 +6,7 @@ class CorporationsController < ApplicationController
   end
 
   # GET: /corporations/new
-  get "/corporations/new" do
+  get "/corporation/new" do
     erb :"/corporations/new.html"
   end
 
