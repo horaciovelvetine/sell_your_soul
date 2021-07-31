@@ -13,6 +13,7 @@ class SuckersController < ApplicationController
     redirect '/sucker/#{@sucker.id}'
   end
   
+  
   ## GETS: profile page for user.
   get '/sucker/:id' do
 
