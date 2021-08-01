@@ -4,6 +4,8 @@ class CorporationsController < ApplicationController
 
   # GET: /corporations
   get "/corporations" do
+    @corporations = Corporation.all
+    @sucker = current_sucker
     erb :'/corporation/index'
   end
 
