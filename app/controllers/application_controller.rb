@@ -27,7 +27,7 @@ class ApplicationController < Sinatra::Base
       @sucker = current_sucker 
       redirect :'/sucker/#{@sucker.id}'
     else  
-      erb :'/sucker/login'
+      erb :'/sucker/create'
     end 
   end 
   
@@ -44,13 +44,14 @@ class ApplicationController < Sinatra::Base
       erb :'sucker/login'
     end 
   end 
+  
   ## GETS a now logged out version of the homepage
   get '/logout' do
     if logged_in?
       session.destroy
       redirect to :'/sucker/login'
     else
-      redirect to '/'
+      redirect to :'/'
     end
   end
 
