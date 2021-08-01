@@ -14,16 +14,20 @@ class ApplicationController < Sinatra::Base
 
   ## GETS The homepage
   get "/" do
-    erb :index
+    if logged_in?
+      @sucker = current_sucker
+      redirect :'/sucker/#{@sucker.id}'
+    end
+    erb :'index'
   end
   
   ## GETS (by frist double checking if you are already logged_in) Either a signup page, or directs back to sucker profile
   get '/signup' do
     if logged_in?
       @sucker = current_sucker 
-      redirect "/sucker/#{@sucker.id}"
+      redirect :'/sucker/#{@sucker.id}'
     else  
-      erb :'sucker/create'
+      erb :'/sucker/login'
     end 
   end 
   
@@ -35,7 +39,7 @@ class ApplicationController < Sinatra::Base
   get '/login' do
     if logged_in?
       @sucker = current_sucker 
-      redirect "/sucker/#{@sucker.id}"
+      redirect :'/sucker/#{@sucker.id}'
     else  
       erb :'sucker/login'
     end 
@@ -44,7 +48,7 @@ class ApplicationController < Sinatra::Base
   get '/logout' do
     if logged_in?
       session.destroy
-      redirect to '/login'
+      redirect to :'/sucker/login'
     else
       redirect to '/'
     end
@@ -57,10 +61,10 @@ class ApplicationController < Sinatra::Base
     
     if @sucker && @sucker.authenticate(params[:password])
       session[:user_id] = @sucker.id 
-      redirect "/sucker/#{@sucker.id}"
+      redirect :'/sucker/#{@sucker.id}'
     else 
       flash[:message] = "Sorry, the username or password do not match. Please try agin."
-      redirect '/login'
+      redirect :'/sucker/login'
     end
 
   end
