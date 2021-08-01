@@ -85,3 +85,74 @@
         <input type="text" name="additional_details_two" id="additional_details_two" placeholder="Even More Info"><br>     
       
       <input type="submit" value="Create Account">
+
+##iterator to go over corps and do a checkbox for each
+          <% @corporations.each do |company| %>
+            <input type="checkbox" name="corporations[]" id="<%= company.name %>" value="<%= audition.id %>"> <%= company.name %><br>
+          <% end %>  
+
+
+## EDIT ATTRIBUTES WORKING LIST #2 PATCH
+      <form action="/sucker/<%= sucker.id %>" method="POST">
+      <input id="hidden" type="hidden" name="_method" value="patch">
+      
+        <input type="text" name="first_name" id="first_name" placeholder="First Name" 
+        required><br>
+        
+        <input type="text" name="middle_name" id="middle_name" placeholder="Middle Name" required><br>
+        
+        <input type="text" name="last_name" id="last_name" placeholder="Last Name" required><br>
+        
+        <input type="text" name="maiden_name" id="maiden_name" placeholder="Maiden Name"><br>
+        
+        <input type="text" name="pseudonym" id="pseudonym" placeholder="pseudonym"><br>
+        
+        <input type="text" name="alias" id="alias" placeholder="Alias"><br>
+        
+        <input type="text" name="username" id="username" placeholder="Username" required><br>
+        
+        <input type="text" name="password" id="password" placeholder="Password" 
+        required><br>
+        
+        <input type="text" name="cell_phone_number" id="cell_phone_number" placeholder="Cell Phone Number" required><br>
+        
+        <input type="text" name="home_phone_number" id="home_phone_number" placeholder="Home Phone"><br>
+        
+        <input type="text" name="address_one" id="address_one" placeholder="Address(Primary)" required><br>
+        
+        <input type="text" name="address_two" id="address_two" placeholder="Address(Secondary)"><br>
+        <input type="text" name="P_O_Box" id="P_O_Box" placeholder="PO Box"><br>
+
+        <input type="text" name="primary_email" id="primary_email" placeholder="Email" required><br>
+
+        <input type="text" name="secondary_email" id="secondary_email" placeholder="Email 2" required><br>
+
+        <input type="text" name="spam_email" id="spam_email" placeholder="Spam Email" required><br>
+
+        <input type="text" name="yearly_income" id="yearly_income" placeholder="Income (annually)" required><br>
+
+        <input type="text" name="social_security_number" id="social_security_number" placeholder="Social Security Number"><br>
+
+        <input type="text" name="primary_bank" id="primary_bank" placeholder="Primary Bank"><br>
+
+        <input type="text" name="credit_score" id="credit_score" placeholder="Credit Score"><br>
+        
+        <input type="text" name="relationship_status" id="relationship_status" placeholder="Relationship Status"><br>
+
+        <input type="text" name="employment_status" id="employment_status" placeholder="Employment Status" required><br>
+
+        <input type="text" name="employer" id="employer" placeholder="Employer" required><br>
+        
+        <input type="text" name="catch_phrase" id="catch_phrase" placeholder="Catchphrase" required><br>
+        
+        <input type="text" name="political_affiliation" id="political_affiliation" placeholder="Political Affiliation" required><br>
+        
+        <input type="text" name="belief_religion" id="belief_religion" placeholder="Religious Association"><br>
+
+        <input type="text" name="interests" id="interests" placeholder="interests" required><br>
+        
+        <input type="text" name="additional_details_one" id="additional_details_one" placeholder="More Info" required><br>
+        
+        <input type="text" name="additional_details_two" id="additional_details_two" placeholder="Even More Info"><br>     
+      
+      <input type="submit" value="Create Account">
