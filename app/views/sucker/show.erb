@@ -1,3 +1,30 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<div class="container">
+  <header><img src="images/Stupid Simple Logo.svg" class =img-responsive main-image" alt="Logo for SYS.io"></header>
+  <div class="col-md-8 col-md-offset-2">
+    <h2>Dashboard for:</h2>
+    <h4>User: <%=sucker.username%><h4><br>
+    
+    <div class="content">
+      <h5>Welcome!</h5><br>
 
-##Should show the user thier home page with some buttons for actions on a nav form. 
+      <p> Hey <%=sucker.first_name%>, glad your back! While you're here why not check out a few of our amazing <a href="/corporation/index">Our Corporate Partners</a>, the list of companies willing to pay you for your information is growing everyday, so dont miss out on your chance to <i><a href="/sucker/<%=sucker.id %>/edit">add a few<a></i></p><br>
+        <h5>Your info at a glance:</h5><br>
+        <ul>
+          <li><b>Earnings</b>:<%=sucker.balance%></li><br>
+          <li><b>Active Partners</b>:<%=sucker.corporation.all.length%></li><br>
+        <ul>
+    </div>
+
+  <div class="sidebar">
+    <h3>Navigation</h3>
+        <li><b><a href="/">Home</a></b> </li>
+        <li><b><a href="/corporation/index">Our Corporate Partners</a></b></li>
+        <li><b><a href="/sucker/<%= @sucker.id %>/">Go to Profile</a></b></li>
+        <li><b><a href="/sucker/<%= @sucker.id %>/edit">Edit Profile</a></b></li>
+        <li><b><a href="/login">Login</a></b> </li>
+        <li><b><a href="/logout">Logout</a></b> </li>
+      </ul>
+  </div>
+
+  </div>
+</div>
