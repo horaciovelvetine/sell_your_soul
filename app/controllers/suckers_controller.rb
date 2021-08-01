@@ -1,47 +1,45 @@
-require './config/environment'
+# require './config/environment'
 
 class SuckersController < ApplicationController
 
-
-  ## GETS: Checks for user logged in, then directs the user to either a login or sends them to thier profile
-  ## Note this is slightly changed because no public DB view of all the users needs to be availible
   get '/suckers' do 
-    
     if !logged_in?
       redirect :'/login'
     end
-      
     @sucker = current_sucker
     redirect :'/sucker/#{@sucker.id}'
   end
   
 
-  ## GETS: profile page for user.
-  get :'/sucker/:id' do
 
+
+
+  ## GETS: profile page for user.
+  get '/sucker/:id' do
     if !logged_in? 
       redirect :'/login' 
     end 
-
     @sucker = Sucker.find_by_id(params[:id])    
     erb :'/sucker/show'
   end
 
+
+
+
   ## GETS: The form to edit a specific user
   get '/sucker/:id/edit' do 
-    
     if !logged_in?
       redirect :'/login'
     end
-
     @sucker = current_sucker
     if params[:id] != @sucker.id
       flash[:message] = "Sorry, you can only edit your own profile!"
       redirect :'/sucker/#{@sucker.id}'
     else
-      erb :'sucker/edit_sucker'
+      erb :'/sucker/edit'
     end
   end
+
 
 
   ## PATCHES: updates a sucker profile. 
@@ -51,6 +49,8 @@ class SuckersController < ApplicationController
       flash[:message] = "Successfully updated profile!"
       redirect :'/sucker/#{@sucker.id}'
   end
+
+
 
   ## DELETES: user profile,
   delete '/sucker/:id/delete' do
