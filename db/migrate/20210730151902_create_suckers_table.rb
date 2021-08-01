@@ -49,7 +49,7 @@ class CreateSuckersTable < ActiveRecord::Migration[6.1]
       t.text "additional_details_two"
       
       #BEHIND THE SCENES
-      t.real "balance"
+      t.float "balance"
 
       t.timestamps null: false
     end
