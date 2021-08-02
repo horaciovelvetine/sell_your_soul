@@ -14,11 +14,14 @@ class SuckersController < ApplicationController
   end 
 
   post '/signup' do
-    if params[:username] == "" || params[:password] == ""
+    if params[:username] == "" || params[:password] == "" || params[:primary_email] == ""
       redirect :'/signup/'
     end
-    @sucker = Sucker.new(params[:sucker])
 
+    @sucker = Sucker.new(params[:sucker])
+    @sucker.save
+    session[:sucker_id] = @sucker.id
+    redirect :'/sucker/#{@sucker.id}'
   end
 
 
