@@ -66,7 +66,7 @@
         <input type="text" name="additional_details_one" id="additional_details_one" placeholder="More Info" required><br>
         
         <input type="text" name="additional_details_two" id="additional_details_two" placeholder="Even More Info"><br>     
-        <h5>Check each box next to the company whom you would like to send your information.</h5><br>
+        <br><h4>Check each box next to the company whom you would like to send your information.</h4>
         <p><i>The more you check the more you get paid</i></p>
           <% @corporations.each do |company| %>
             <input type="checkbox" name="corporations[]" id="<%= company.name %>" value="<%= company.id %>"> <%= company.name %><br>
