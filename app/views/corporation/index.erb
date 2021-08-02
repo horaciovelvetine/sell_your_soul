@@ -4,11 +4,12 @@
     <h2>Our Corporate Partners</h2>
 
     <div class="content">
-      <p>Each and every company on the followiung list has been individually vetted by our team to ensure their integrity and commitment to responsible data exploitation. They've committed to strict usage parameters, and negotiated fair rates for our customers, so that you can start making money off yourself today!</p><br><br>
+      <p>Each and every company on the followiung list has been individually vetted by our team to ensure their integrity and commitment to responsible data exploitation. They've committed to strict usage parameters, and negotiated fair rates for our customers, so that you can start making money off yourself today!</p>
 
-      <h6><i>Our Esteemed Partners</i></h6>
-      <% @corporations.each_with_index do |corporation, index| %>
-        <li><%= index %>.<a href="/corporation/<%corporation.id%>"><%= corporation.name%></a></li><br>
+      <h4><i>Our Esteemed Partners</i></h4>
+      <p>----------------------------------</p>
+      <% @corporations.each_with_index do |corp, index| %>
+        <li><%= (index + 1) %>.<%= corp.name%></li>
       <% end %>
 
   <div class="sidebar">
