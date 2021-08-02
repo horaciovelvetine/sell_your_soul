@@ -14,6 +14,9 @@ class SuckersController < ApplicationController
   end 
 
   post '/signup' do
+    if params[:username] == "" || params[:password] == ""
+      redirect :'/signup/'
+    end
     @sucker = Sucker.new(params[:sucker])
 
   end
@@ -69,7 +72,7 @@ class SuckersController < ApplicationController
         redirect :'/login'
     end
     
-    
+
     @sucker = current_sucker
     if @sucker.balance < 0
       flash[:message] = "Sorry, you can't delete your profile with a negative balance!"
