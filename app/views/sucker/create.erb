@@ -69,7 +69,7 @@
         <h5>Check each box next to the company whom you would like to send your information.</h5><br>
         <p><i>The more you check the more you get paid</i></p>
           <% @corporations.each do |company| %>
-            <input type="checkbox" name="corporations[]" id="<%= company.name %>" value="<%= audition.id %>"> <%= company.name %><br>
+            <input type="checkbox" name="corporations[]" id="<%= company.name %>" value="<%= company.id %>"> <%= company.name %><br>
           <% end %>  
 
       <input type="submit" value="Create Account">
@@ -81,7 +81,7 @@
     <h3>Navigation</h3>
         <li><b><a href="/">Home</a></b> </li>
         <li><b><a href="/signup">Signup</a></b>
-        <li><b><a href="/corporation/index">Corporate Partners</a></b></li>
+        <li><b><a href="/corporations">Corporate Partners</a></b></li>
         <li><b><a href="/login">Login</a></b> </li>
         <li><b><a href="/logout">Logout</a></b> </li>
       </ul>
