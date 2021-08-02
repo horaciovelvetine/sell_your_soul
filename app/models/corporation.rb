@@ -1,3 +1,4 @@
 class Corporation < ActiveRecord::Base
-  has_and_belongs_to_many :suckers
+  #so do this 
+  # needs to be through corpo_suckers joins table / creation
 end

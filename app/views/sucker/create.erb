@@ -4,16 +4,16 @@
     <h2>Create a new User</h2>
 
     <div class="content">
-    <p>Please fill out the form below as completely as you can! The more complete the data provided, the more companies will pay to have that information!</p>
-      
-      <form action="/signup" method="POST">
+    <p>Please fill out the form below as completely as you can! Not every field is required, but the more information you provide, the higher payout you will recieve that information.</p>
+
+      <form action="/suckers" method="POST">
       
         <input type="text" name="first_name" id="first_name" placeholder="First Name" 
-        required><br>
+        ><br>
         
-        <input type="text" name="middle_name" id="middle_name" placeholder="Middle Name" required><br>
+        <input type="text" name="middle_name" id="middle_name" placeholder="Middle Name" ><br>
         
-        <input type="text" name="last_name" id="last_name" placeholder="Last Name" required><br>
+        <input type="text" name="last_name" id="last_name" placeholder="Last Name" ><br>
         
         <input type="text" name="maiden_name" id="maiden_name" placeholder="Maiden Name"><br>
         
@@ -24,24 +24,24 @@
         <input type="text" name="username" id="username" placeholder="Username" required><br>
         
         <input type="text" name="password" id="password" placeholder="Password" 
-        required><br>
+        ><br>
         
-        <input type="text" name="cell_phone_number" id="cell_phone_number" placeholder="Cell Phone Number" required><br>
+        <input type="text" name="cell_phone_number" id="cell_phone_number" placeholder="Cell Phone Number" ><br>
         
         <input type="text" name="home_phone_number" id="home_phone_number" placeholder="Home Phone"><br>
         
-        <input type="text" name="address_one" id="address_one" placeholder="Address(Primary)" required><br>
+        <input type="text" name="address_one" id="address_one" placeholder="Address(Primary)" ><br>
         
         <input type="text" name="address_two" id="address_two" placeholder="Address(Secondary)"><br>
         <input type="text" name="P_O_Box" id="P_O_Box" placeholder="PO Box"><br>
 
-        <input type="text" name="primary_email" id="primary_email" placeholder="Email" required><br>
+        <input type="text" name="primary_email" id="primary_email" placeholder="Email" ><br>
 
-        <input type="text" name="secondary_email" id="secondary_email" placeholder="Email 2" required><br>
+        <input type="text" name="secondary_email" id="secondary_email" placeholder="Email 2" ><br>
 
-        <input type="text" name="spam_email" id="spam_email" placeholder="Spam Email" required><br>
+        <input type="text" name="spam_email" id="spam_email" placeholder="Spam Email" ><br>
 
-        <input type="text" name="yearly_income" id="yearly_income" placeholder="Income (annually)" required><br>
+        <input type="text" name="yearly_income" id="yearly_income" placeholder="Income (annually)" ><br>
 
         <input type="text" name="social_security_number" id="social_security_number" placeholder="Social Security Number"><br>
 
@@ -51,21 +51,22 @@
         
         <input type="text" name="relationship_status" id="relationship_status" placeholder="Relationship Status"><br>
 
-        <input type="text" name="employment_status" id="employment_status" placeholder="Employment Status" required><br>
+        <input type="text" name="employment_status" id="employment_status" placeholder="Employment Status" ><br>
 
-        <input type="text" name="employer" id="employer" placeholder="Employer" required><br>
+        <input type="text" name="employer" id="employer" placeholder="Employer" ><br>
         
-        <input type="text" name="catch_phrase" id="catch_phrase" placeholder="Catchphrase" required><br>
+        <input type="text" name="catch_phrase" id="catch_phrase" placeholder="Catchphrase" ><br>
         
-        <input type="text" name="political_affiliation" id="political_affiliation" placeholder="Political Affiliation" required><br>
+        <input type="text" name="political_affiliation" id="political_affiliation" placeholder="Political Affiliation" ><br>
         
         <input type="text" name="belief_religion" id="belief_religion" placeholder="Religious Association"><br>
 
-        <input type="text" name="interests" id="interests" placeholder="interests" required><br>
+        <input type="text" name="interests" id="interests" placeholder="interests" ><br>
         
-        <input type="text" name="additional_details_one" id="additional_details_one" placeholder="More Info" required><br>
+        <input type="text" name="additional_details_one" id="additional_details_one" placeholder="More Info" ><br>
         
         <input type="text" name="additional_details_two" id="additional_details_two" placeholder="Even More Info"><br>     
+        
         <br><h4>Check each box next to the company whom you would like to send your information.</h4>
         <p><i>The more you check the more you get paid</i></p>
           <% @corporations.each do |company| %>
@@ -74,6 +75,8 @@
 
       <input type="submit" value="Create Account">
       
+
+      <button >
 </form>
     </div>
 

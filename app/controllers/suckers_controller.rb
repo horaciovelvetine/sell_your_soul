@@ -2,6 +2,7 @@
 
 class SuckersController < ApplicationController
 
+
   get '/suckers' do 
     if !logged_in?
       redirect :'/login'
@@ -11,7 +12,10 @@ class SuckersController < ApplicationController
   end
   
 
+  ##work here
+  post '/suckers' do
 
+  end
 
 
   ## GETS: profile page for user.
@@ -22,8 +26,6 @@ class SuckersController < ApplicationController
     @sucker = Sucker.find_by_id(params[:id])    
     erb :'/sucker/show'
   end
-
-
 
 
   ## GETS: The form to edit a specific user
