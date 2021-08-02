@@ -63,14 +63,12 @@ class SuckersController < ApplicationController
       redirect :'/sucker/#{@sucker.id}'
   end
 
-
-
   ## DELETES: user profile,
   delete '/sucker/:id/delete' do
-    
     if !logged_in?
         redirect :'/login'
     end
+    
     
     @sucker = current_sucker
     if @sucker.balance < 0
