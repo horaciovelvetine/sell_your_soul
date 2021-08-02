@@ -1,4 +1,4 @@
-# require './config/environment'
+require './config/environment'
 
 class SuckersController < ApplicationController
 
@@ -20,7 +20,7 @@ class SuckersController < ApplicationController
 
     @sucker = Sucker.new(params[:sucker])
     @sucker.save
-    session[:sucker_id] = @sucker.id
+    session[:user_id] = @sucker.id
     redirect :'/sucker/#{@sucker.id}'
   end
 

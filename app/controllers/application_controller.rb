@@ -23,7 +23,6 @@ class ApplicationController < Sinatra::Base
   
   ## GETS (by frist double checking if you are already logged_in) Either a signup page, or directs back to sucker profile
 
-
   
   get '/termsandconditions' do
     erb :terms
@@ -56,9 +55,9 @@ class ApplicationController < Sinatra::Base
     
     if @sucker && @sucker.authenticate(params[:password])
       session[:user_id] = @sucker.id 
-      redirect :'/sucker/#{@sucker.id}'
+      redirect :'/sucker/:id'
     else 
-      flash[:message] = "Sorry, the username or password do not match. Please try agin."
+      flash[:message] = "That didnt work, try again."
       redirect :'/sucker/login'
     end
 
@@ -72,7 +71,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_sucker
-      @current_sucker ||= Sucker.find_by(id: session[:sucker_id]) if session[:sucker_id]
+      @current_sucker ||= Sucker.find_by(id: session[:user_id]) if session[:user_id]
     end
   end
 end
