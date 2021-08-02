@@ -18,8 +18,12 @@ class SuckersController < ApplicationController
       redirect :'/signup/'
     end
 
-    @sucker = Sucker.new(params[:sucker])
+    binding.pry
+    @sucker = Sucker.new(params[:attribute])
     @sucker.save
+
+    
+
     session[:user_id] = @sucker.id
     redirect :'/sucker/#{@sucker.id}'
   end
