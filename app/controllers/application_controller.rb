@@ -22,15 +22,8 @@ class ApplicationController < Sinatra::Base
   end
   
   ## GETS (by frist double checking if you are already logged_in) Either a signup page, or directs back to sucker profile
-  get '/signup' do
-    if logged_in?
-      @sucker = current_sucker 
-      redirect :'/sucker/#{@sucker.id}'
-    else  
-      @corporations = Corporation.all
-      erb :'/sucker/create'
-    end 
-  end 
+
+
   
   get '/termsandconditions' do
     erb :terms

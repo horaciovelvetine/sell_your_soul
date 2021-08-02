@@ -3,6 +3,23 @@
 class SuckersController < ApplicationController
 
 
+  get '/signup' do
+    if logged_in?
+      @sucker = current_sucker 
+      redirect :'/sucker/#{@sucker.id}'
+    else  
+      @corporations = Corporation.all
+      erb :'/sucker/create'
+    end 
+  end 
+
+  post '/signup' do
+    @sucker = Sucker.new(params[:sucker])
+
+  end
+
+
+
   get '/suckers' do 
     if !logged_in?
       redirect :'/login'
@@ -11,12 +28,6 @@ class SuckersController < ApplicationController
     redirect :'/sucker/#{@sucker.id}'
   end
   
-
-  ##work here
-  post '/suckers' do
-
-  end
-
 
   ## GETS: profile page for user.
   get '/sucker/:id' do
