@@ -27,6 +27,7 @@ class ApplicationController < Sinatra::Base
       @sucker = current_sucker 
       redirect :'/sucker/#{@sucker.id}'
     else  
+      @corporations = Corporation.all
       erb :'/sucker/create'
     end 
   end 
