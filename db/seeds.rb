@@ -1,5 +1,6 @@
 #List of a Shitload of Companies
 corporations_list = {
+"State Farm Insurance" => {:payout_amount => 0.000 },
 "Huntington Bancshares" => {:payout_amount => 0.00067 },
 "Post Holdings" => {:payout_amount => 0.00068 },
 "Cerner" => {:payout_amount => 0.000487 },
@@ -111,6 +112,92 @@ corporations_list = {
 "Blackstone Group" => {:payout_amount => 0.000443 },
 "Devon Energy" => {:payout_amount => 0.000453 },
 "Ulta Beauty" => {:payout_amount => 0.000173 },
+"Caterpillar" => {:payout_amount => 0.000345 },
+"Cisco Systems" => {:payout_amount => 0.000333 },
+"Pfizer" => {:payout_amount => 0.000333 },
+"HCA Healthcare" => {:payout_amount => 0.000312 },
+"AIG" => {:payout_amount => 0.000444 },
+"American Express" => {:payout_amount => 0.000456 },
+"Delta Air Lines" => {:payout_amount => 0.000478 },
+"Merck" => {:payout_amount => 0.000555 },
+"American Airlines Group" => {:payout_amount => 0.000333 },
+"Charter Communications" => {:payout_amount => 0.000333 },
+"Allstate" => {:payout_amount => 0.000444 },
+"New York Life Insurance" => {:payout_amount => 0.000222 },
+"Nationwide" => {:payout_amount => 0.000111 },
+"Best Buy" => {:payout_amount => 0.000231 },
+"United Airlines Holdings" => {:payout_amount => 0.000132 },
+"Liberty Mutual Insurance Group" => {:payout_amount => 0.000111 },
+"Dow" => {:payout_amount => 0.000308 },
+"Tyson Foods" => {:payout_amount => 0.000666 },
+"TJX" => {:payout_amount => 0.000999 },
+"TIAA" => {:payout_amount => 0.000990 },
+"Oracle" => {:payout_amount => 0.000118 },
+"General Dynamics" => {:payout_amount => 0.000542 },
+"Deere" => {:payout_amount => 0.000432 },
+"Nike" => {:payout_amount => 0.000678 },
+"Progressive" => {:payout_amount => 0.000891 },
+"Publix Super Markets" => {:payout_amount => 0.000318 },
+"Coca-Cola" => {:payout_amount => 0.000578 },
+"Massachusetts Mutual Life Insurance" => {:payout_amount => 0.000612 },
+"Wells Fargo" => {:payout_amount => 0.000712 },
+"Citigroup" => {:payout_amount => 0.000931 },
+"Valero Energy" => {:payout_amount => 0.000909 },
+"General Electric" => {:payout_amount => 0.000808 },
+"Johnson & Johnson" => {:payout_amount => 0.000707 },
+"IBM" => {:payout_amount => 0.000601 },
+"Target" => {:payout_amount => 0.000602 },
+"Raytheon Technologies" => {:payout_amount => 0.000409 },
+"Boeing" => {:payout_amount => 0.000993 },
+"Freddie Mac" => {:payout_amount => 0.000254 },
+"Centene" => {:payout_amount => 0.000165 },
+"United Parcel Service" => {:payout_amount => 0.000718 },
+"Lowe’s" => {:payout_amount => 0.000212 },
+"Intel" => {:payout_amount => 0.000143 },
+"Facebook" => {:payout_amount => 0.000999 },
+"FedEx" => {:payout_amount => 0.000108 },
+"MetLife" => {:payout_amount => 0.000678 },
+"Walt Disney" => {:payout_amount => 0.000104 },
+"Procter & Gamble" => {:payout_amount => 0.000560 },
+"PepsiCo" => {:payout_amount => 0.000302 },
+"Humana" => {:payout_amount => 0.000198 },
+"Prudential Financial" => {:payout_amount => 0.000616 },
+"Archer Daniels Midland" => {:payout_amount => 0.000907 },
+"Albertsons" => {:payout_amount => 0.000108 },
+"Sysco" => {:payout_amount => 0.000212 },
+"Lockheed Martin" => {:payout_amount => 0.000108 },
+"HP" => {:payout_amount => 0.000403 },
+"Energy Transfer" => {:payout_amount => 0.000023 },
+"Goldman Sachs Group" => {:payout_amount => 0.000112 },
+"Morgan Stanley" => {:payout_amount => 0.000801 },
+"Westinghouse Air Brake" => {:payout_amount => 0.000345 },
+"Expeditors Intl. of Washington" => {:payout_amount => 0.000598 },
+"Andersons" => {:payout_amount => 0.000497 },
+"Westlake Chemical" => {:payout_amount => 0.000478 },
+"Constellation Brands" => {:payout_amount => 0.000538 },
+"Frontier Communications" => {:payout_amount => 0.000974 },
+"JetBlue Airways" => {:payout_amount => 0.000305 },
+"Citizens Financial Group" => {:payout_amount => 0.000303 },
+"Raymond James Financial" => {:payout_amount => 0.000254 },
+"Foot Locker" => {:payout_amount => 0.000634 },
+"Hershey" => {:payout_amount => 0.000254 },
+"Zimmer Biomet Holdings" => {:payout_amount => 0.000786 },
+"Cincinnati Financial" => {:payout_amount => 0.000265 },
+"Western & Southern Financial Group" => {:payout_amount => 0.000365 },
+"W.R. Berkley" => {:payout_amount => 0.000299 },
+"Thor Industries" => {:payout_amount => 0.000304 },
+"Regeneron Pharmaceuticals" => {:payout_amount => 0.000222 },
+"Spirit AeroSystems Holdings" => {:payout_amount => 0.000467 },
+"J.M. Smucker" => {:payout_amount => 0.000456 },
+"PPL" => {:payout_amount => 0.000607 },
+"Insight Enterprises" => {:payout_amount => 0.000604 },
+"Quest Diagnostics" => {:payout_amount => 0.000103 },
+"KeyCorp" => {:payout_amount => 0.000206 },
+"Veritiv" => {:payout_amount => 0.000111 },
+"DCP Midstream" => {:payout_amount => 0.000743 },
+"American Tower" => {:payout_amount => 0.000111 },
+"Graybar Electric" => {:payout_amount => 0.000702 },
+"WEC Energy Group" => {:payout_amount => 0.000408 },
 
 
 }
@@ -126,66 +213,10 @@ end
 
 
 # Some more corps in case. 
-# Anthem
-# Wells Fargo
-# Citigroup
-# Valero Energy
-# General Electric
-# Johnson & Johnson
-# State Farm Insurance
-# Target
-# IBM
-# Raytheon Technologies
-# Boeing
-# Freddie Mac
-# Centene
-# United Parcel Service
-# Lowe’s
-# Intel
-# Facebook
-# FedEx
-# MetLife
-# Walt Disney
-# Procter & Gamble
-# PepsiCo
-# Humana
-# Prudential Financial
-# Archer Daniels Midland
-# Albertsons
-# Sysco
-# Lockheed Martin
-# HP
-# Energy Transfer
-# Goldman Sachs Group
-# Morgan Stanley
-# Caterpillar
-# Cisco Systems
-# Pfizer
-# HCA Healthcare
-# AIG
-# American Express
-# Delta Air Lines
-# Merck
-# American Airlines Group
-# Charter Communications
-# Allstate
-# New York Life Insurance
-# Nationwide
-# Best Buy
-# United Airlines Holdings
-# Liberty Mutual Insurance Group
-# Dow
-# Tyson Foods
-# TJX
-# TIAA
-# Oracle
-# General Dynamics
-# Deere
-# Nike
-# Progressive
-# Publix Super Markets
-# Coca-Cola
-# Massachusetts Mutual Life Insurance
+# "" => {:payout_amount => 0.000 },
+
+
+
 # Tech Data
 # World Fuel Services
 # Honeywell International
@@ -484,32 +515,7 @@ end
 # Sanmina
 # Amphenol
 # Williams
-# Westinghouse Air Brake
-# Expeditors Intl. of Washington
-# Andersons
-# Westlake Chemical
-# Constellation Brands
-# Frontier Communications
-# JetBlue Airways
-# Citizens Financial Group
-# Raymond James Financial
-# Foot Locker
-# Hershey
-# Zimmer Biomet Holdings
-# Cincinnati Financial
-# Western & Southern Financial Group
-# W.R. Berkley
-# Thor Industries
-# Regeneron Pharmaceuticals
-# Spirit AeroSystems Holdings
-# J.M. Smucker
-# PPL
-# Insight Enterprises
-# Quest Diagnostics
-# KeyCorp
-# Veritiv
-# DCP Midstream
-# American Tower
-# Graybar Electric
-# WEC Energy Group
-# NVR
+
+
+
+# "" => {:payout_amount => 0.000 },
