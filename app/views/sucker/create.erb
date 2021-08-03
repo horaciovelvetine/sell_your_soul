@@ -8,26 +8,27 @@
     
 
       <form action="/signup" method="POST">
-        <p>First Name:<input type="text" name="first_name" id="first_name" placeholder="First Name" 
-        ><br></p>
-        <p>Middle Name:<input type="text" name="middle_name" id="middle_name" placeholder="Middle Name" ><br></p>
+        <p><i>required fields</i></p>
+        <p>First Name:<input type="text" name="first_name" id="first_name" placeholder="First Name" ><br></p>
         <p>Last Name:<input type="text" name="last_name" id="last_name" placeholder="Last Name" ><br></p>
-        <p>Maiden Name:<input type="text" name="maiden_name" id="maiden_name" placeholder="Maiden Name"><br></p>
-        <p>Pseudonym:</p><input type="text" name="pseudonym" id="pseudonym" placeholder="pseudonym"><br></p>
-        <p>Alias:<input type="text" name="alias" id="alias" placeholder="Alias"><br></p>
+        <p>Email:<input type="text" name="primary_email" id="primary_email" placeholder="Email" ><br></p>
         <p>Username:<input type="text" name="username" id="username" placeholder="Username" required><br></p>
         <p>Password:<input type="text" name="password" id="password" placeholder="Password" ><br></p>
+        <p><i>additional fields</i><br>
+        <p>Middle Name:<input type="text" name="middle_name" id="middle_name" placeholder="Middle Name" ><br></p>
+        <p>Maiden Name:<input type="text" name="maiden_name" id="maiden_name" placeholder="Maiden Name"><br></p>
+        <p>Pseudonym:</p><input type="text" name="pseudonym" id="pseudonym" placeholder="Pseudonym"><br></p>
+        <p>Alias:<input type="text" name="alias" id="alias" placeholder="Alias"><br></p>
         <p>Cell-Phone:<input type="text" name="cell_phone_number" id="cell_phone_number" placeholder="Cell Phone Number" ><br></p>
         <p>Home-Phone:<input type="text" name="home_phone_number" id="home_phone_number" placeholder="Home Phone"><br></p>
         <p>Primary Address:<input type="text" name="address_one" id="address_one" placeholder="Address(Primary)" ><br></p>
         <p>Secondary Address:<input type="text" name="address_two" id="address_two" placeholder="Address(Secondary)"><br></p>
-        <p>P.O. Box:<input type="text" name="P_O_Box" id="P_O_Box" placeholder="PO Box"><br></p>
-        <p>Primary Email:<input type="text" name="primary_email" id="primary_email" placeholder="Email" ><br></p>
+        <p>P.O. Box:<input type="text" name="p_o_box" id="p_o_box" placeholder="PO Box"><br></p>
         <p>Secondary Email:<input type="text" name="secondary_email" id="secondary_email" placeholder="Email 2" ><br></p>
         <p>Spam Email:<input type="text" name="spam_email" id="spam_email" placeholder="Spam Email" ><br></p>
         <p>Yearly Income:<input type="text" name="yearly_income" id="yearly_income" placeholder="Income (annually)" ><br></p>
         <p>Social Security Number:<input type="text" name="social_security_number" id="social_security_number" placeholder="Social Security Number"><br></p>
-        <p>Primary Bark:<input type="text" name="primary_bank" id="primary_bank" placeholder="Primary Bank"><br></p>
+        <p>Primary Bank:<input type="text" name="primary_bank" id="primary_bank" placeholder="Primary Bank"><br></p>
         <p>Credit Score:<input type="text" name="credit_score" id="credit_score" placeholder="Credit Score"><br></p>
         <p>Relationship Status:<input type="text" name="relationship_status" id="relationship_status" placeholder="Relationship Status"><br></p>
         <p>Employment Status:<input type="text" name="employment_status" id="employment_status" placeholder="Employment Status" ><br></p>
@@ -42,7 +43,7 @@
         <br><h4>Check each box next to the company whom you would like to send your information.</h4>
         <p><i>The more you check the more you get paid</i></p>
           <% @corporations.each do |company| %>
-            <input type="checkbox" name="corporations[]" id="<%= company.name %>" value="<%= company.id %>"> <%= company.name %><br>
+            <input type="checkbox" name="corporations[]" id="<%=company.id%>" value="<%=company.id%>" > <%= company.name %></input><br>
           <% end %><br>  
         <h6>By submitting the form below you agree to <a href="/termsandconditions">our terms of service</a></h6><br>
       <input type="submit" value="Create Account"><br>
