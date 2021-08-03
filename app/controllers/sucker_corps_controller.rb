@@ -34,4 +34,10 @@ class SuckerCorpsController < ApplicationController
   # delete "/sucker_corps/:id/delete" do
   #   redirect "/sucker_corps"
   # end
+
+
+  # corps.each do |co|
+  #   @sucker.corporations << Corporation.find_by(:id)
+  # end
+
 end

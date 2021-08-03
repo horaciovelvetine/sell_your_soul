@@ -2,7 +2,6 @@ require './config/environment'
 
 class SuckersController < ApplicationController
 
-
   get '/signup' do
     if logged_in?
       @sucker = current_sucker 
@@ -15,15 +14,21 @@ class SuckersController < ApplicationController
 
   post '/signup' do
     if params[:username] == "" || params[:password] == "" || params[:primary_email] == ""
-      redirect :'/signup/'
+      redirect :'/signup'
+    elsif params[:username] == nil || params[:password] == nil || params[:primary_email] == nil
+      redirect :'/signup'
+    end
+    
+    @sucker = Sucker.new(:first_name => params["first_name"], :last_name => params["last_name"], :primary_email => params["primary_email"], :username => params["username"], :password => params["password"],:middle_name => params["middle_name"], :maiden_name => params["maiden_name"], :pseudonym => params["pseudonym"], :alias => params["alias"], :cell_phone_number => params["cell_phone_number"], :home_phone_number => params["home_phone_number"], :address_one => params["address_one"], :address_two => params["address_two"], :P_O_Box => params["p_o_box"], :secondary_email => params["secondary_email"], :spam_email => params["spam_email"], :yearly_income => params["yearly_income"], :social_security_number => params["social_security_number"], :primary_bank => params["primary_bank"], :credit_score => params["credit_score"], :relationship_status => params["relationship_status"], :employment_status => params["employment_status"], :employer => params["employer"], :catch_phrase => params["catch_phrase"], :political_affiliation => params["political_affiliation"], :belief_religion => params["belief_religion"], :interests => params["interests"], :additional_details_one => params["additional_details_one"], :additional_details_two => params["additional_details_two"])
+
+    @corporations = params[:corporations]
+    
+    @corporations.each do |corp|
+      @sucker.corporations << corp
+      corp.suckers << @sucker
     end
 
-    binding.pry
-    @sucker = Sucker.new(params[:attribute])
     @sucker.save
-
-    
-
     session[:user_id] = @sucker.id
     redirect :'/sucker/#{@sucker.id}'
   end
@@ -99,4 +104,8 @@ class SuckersController < ApplicationController
       end
     end
   end
+
+  private
+
+  
 end
