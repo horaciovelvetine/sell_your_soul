@@ -24,11 +24,8 @@ class ApplicationController < Sinatra::Base
   ## GETS (by frist double checking if you are already logged_in) Either a signup page, or directs back to sucker profile
 
   
-  get '/termsandconditions' do
-    erb :terms
-  end
-
-
+  
+  
   ## GETS the login page if not logged_in? already
   get '/login' do
     if logged_in?
@@ -38,8 +35,8 @@ class ApplicationController < Sinatra::Base
       erb :'sucker/login'
     end 
   end 
-
-
+  
+  
   ## GETS a now logged out version of the homepage
   get '/logout' do
     if logged_in?
@@ -49,9 +46,9 @@ class ApplicationController < Sinatra::Base
       redirect to :'/'
     end
   end
-
-
-
+  
+  
+  
   ## POST(s) the information from the login form, and redirects now signed in user to thier home page
   post '/login' do
     
@@ -63,16 +60,20 @@ class ApplicationController < Sinatra::Base
     else 
       redirect :'/sucker/login'
     end
-
+    
   end
-
-
+  
+  #my legal defense
+  get '/termsandconditions' do
+    erb :terms
+  end
+  
   helpers do
-
+    
     def logged_in?
       !!current_sucker
     end
-
+    
     def current_sucker
       @current_sucker ||= Sucker.find_by(id: session[:user_id]) if session[:user_id]
     end

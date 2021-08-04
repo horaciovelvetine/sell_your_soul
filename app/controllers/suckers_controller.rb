@@ -21,6 +21,8 @@ class SuckersController < ApplicationController
     
     @sucker = Sucker.new(:first_name => params["first_name"], :last_name => params["last_name"], :primary_email => params["primary_email"], :username => params["username"], :password => params["password"],:middle_name => params["middle_name"], :maiden_name => params["maiden_name"], :pseudonym => params["pseudonym"], :alias => params["alias"], :cell_phone_number => params["cell_phone_number"], :home_phone_number => params["home_phone_number"], :address_one => params["address_one"], :address_two => params["address_two"], :P_O_Box => params["p_o_box"], :secondary_email => params["secondary_email"], :spam_email => params["spam_email"], :yearly_income => params["yearly_income"], :social_security_number => params["social_security_number"], :primary_bank => params["primary_bank"], :credit_score => params["credit_score"], :relationship_status => params["relationship_status"], :employment_status => params["employment_status"], :employer => params["employer"], :catch_phrase => params["catch_phrase"], :political_affiliation => params["political_affiliation"], :belief_religion => params["belief_religion"], :interests => params["interests"], :additional_details_one => params["additional_details_one"], :additional_details_two => params["additional_details_two"])
 
+    @sucker.balance = 0
+
     @corporation_ids = params[:corporations]
     @corporation_ids.each do |identifier|
       corp = Corporation.find_by_id(identifier)
@@ -47,18 +49,18 @@ class SuckersController < ApplicationController
       redirect :'/login' 
     end 
     
-    @sucker = Sucker.find_by_id(params[:id])    
+    @sucker = current_sucker
     erb :'/sucker/show'
   end
 
 
   ## GETS: The form to edit a specific user
   get '/sucker/:id/edit' do 
+    if logged_in?
+      redirect :'/login' 
+    end 
+    @sucker = current_sucker
     binding.pry
-    # if !logged_in?
-    #   redirect :'/login'
-    # end
-    # @sucker = current_sucker
     # if params[:id] != @sucker.id
     #   # flash[:message] = "Sorry, you can only edit your own profile!"
     #   redirect :'/sucker/#{@sucker.id}'
