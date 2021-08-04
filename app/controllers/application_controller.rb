@@ -44,6 +44,7 @@ class ApplicationController < Sinatra::Base
   ## POST(s) the information from the login form, and redirects now signed in user to thier home page
   post '/login' do
     
+
     @sucker = Sucker.find_by(username: params[:username])
     
     if @sucker && @sucker.authenticate(params[:password])

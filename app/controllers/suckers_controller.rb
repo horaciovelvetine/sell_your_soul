@@ -2,6 +2,7 @@ require './config/environment'
 
 class SuckersController < ApplicationController
 
+  #GETS: The signup page for new suckers
   get '/signup' do
     if logged_in?
       @sucker = current_sucker 
@@ -12,6 +13,7 @@ class SuckersController < ApplicationController
     end 
   end 
 
+  #POSTS: the signup action to the DB / moves user to next 
   post '/signup' do
     if params[:username] == "" || params[:password] == "" || params[:primary_email] == ""
       redirect :'/signup'
@@ -57,28 +59,25 @@ class SuckersController < ApplicationController
 
   ## GETS: The form to edit a specific user
   get '/sucker/:id/edit' do 
-    if logged_in?
+    if !logged_in?
       redirect :'/login' 
     end 
+    
     @sucker = current_sucker
-    binding.pry
-    # if params[:id] != @sucker.id
-    #   # flash[:message] = "Sorry, you can only edit your own profile!"
-    #   redirect :'/sucker/#{@sucker.id}'
-    # else
-    #   erb :'/sucker/edit'
-    # end
+    if session[:user_id] != @sucker.id
+      redirect :'/sucker/#{@sucker.id}'
+    end
+    erb :'/sucker/edit'
+
   end
 
 
 
   ## PATCHES: updates a sucker profile. 
   patch '/sucker/:id' do 
-    binding.pry
-      # @sucker = current_sucker  
-      # @sucker.update(params)
-      # # flash[:message] = "Successfully updated profile!"
-      # redirect :'/sucker/#{@sucker.id}'
+      @sucker = current_sucker  
+      @sucker.update(params)
+      redirect :'/sucker/#{@sucker.id}'
   end
 
   ## DELETES: user profile,
