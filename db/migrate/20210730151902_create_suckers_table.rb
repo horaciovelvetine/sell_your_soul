@@ -20,7 +20,7 @@ class CreateSuckersTable < ActiveRecord::Migration[6.1]
       #ADDRESS
       t.string "address_one"
       t.string "address_two"
-      t.string "P_O_Box"
+      t.string "p_o_box"
       
       #EMAILS
       t.string "primary_email"
