@@ -27,16 +27,13 @@ class SuckersController < ApplicationController
       @sucker.corporations << corp
     end
 
-    @init_payout = 0
-
     @sucker.corporations.each do |corpo|
       @init_payout += corpo.payout_amount
     end
 
+    @init_payout = 0
     @sucker.balance = @init_payout
     @sucker.save
-    
-    binding.pry
 
     if @sucker.id != nil    
         session[:user_id] = @sucker.id  
