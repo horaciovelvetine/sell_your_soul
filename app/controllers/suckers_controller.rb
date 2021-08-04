@@ -33,23 +33,11 @@ class SuckersController < ApplicationController
     if @sucker.id != nil    
         session[:user_id] = @sucker.id  
         # flash[:message] = "Successfully created profile!"
-        redirect :'/sucker/#{@sucker.id}'
+        redirect "/sucker/#{@sucker.id}"
       else
         # flash[:message] = "Looks like you already have an account. Please sign in!"
-        redirect :'/login'
-      end
-
-    ##here build the redirect back to the page and the id/things
-  end
-
-
-
-  get '/suckers' do 
-    if !logged_in?
-      redirect :'/login'
+        # redirect :'/login'
     end
-    @sucker = current_sucker
-    redirect :'/sucker/#{@sucker.id}'
   end
   
 
@@ -58,6 +46,7 @@ class SuckersController < ApplicationController
     if !logged_in? 
       redirect :'/login' 
     end 
+    # binding.pry
     @sucker = Sucker.find_by_id(params[:id])    
     erb :'/sucker/show'
   end
