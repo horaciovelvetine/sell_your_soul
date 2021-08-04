@@ -9,9 +9,6 @@ class CorporationsController < ApplicationController
     erb :'/corporation/index'
   end
 
-  get "corporation/index" do
-    redirect to :'/corporations'
-  end
 
 
 

@@ -7,7 +7,7 @@
     <div class="content">
       <h5>Welcome!</h5><br>
 
-      <p> Hey <%=@sucker.first_name%>, glad your back! While you're here why not check out a few of our amazing <a href="/corporation/index">Our Corporate Partners</a>, the list of companies willing to pay you for your information is growing everyday, so dont miss out on your chance to <i><a href="/sucker/<%=@sucker.id %>/edit">add a few<a></i></p><br>
+      <p> Hey <%=@sucker.first_name%>, glad your back! While you're here why not check out a few of our amazing <a href="/corporations">Corporate Partners</a>, the list of companies willing to pay you for your information is growing everyday, so dont miss out on your chance to <i><a href="/sucker/<%=@sucker.id %>/edit">add a few<a></i></p><br>
         <h5>Your info at a glance:</h5><br>
         <ul>
           <li><b>Earnings</b>:<%= @sucker.balance == 0 ? "Your balance is zero" : @sucker.balance %></li><br>
