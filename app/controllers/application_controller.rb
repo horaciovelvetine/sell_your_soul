@@ -28,6 +28,7 @@ class ApplicationController < Sinatra::Base
     erb :terms
   end
 
+
   ## GETS the login page if not logged_in? already
   get '/login' do
     if logged_in?
@@ -37,7 +38,8 @@ class ApplicationController < Sinatra::Base
       erb :'sucker/login'
     end 
   end 
-  
+
+
   ## GETS a now logged out version of the homepage
   get '/logout' do
     if logged_in?
@@ -48,6 +50,8 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+
+
   ## POST(s) the information from the login form, and redirects now signed in user to thier home page
   post '/login' do
     
@@ -57,7 +61,6 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = @sucker.id 
       redirect :'/sucker/:id'
     else 
-      flash[:message] = "That didnt work, try again."
       redirect :'/sucker/login'
     end
 
