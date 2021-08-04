@@ -45,9 +45,8 @@ class SuckersController < ApplicationController
   get '/sucker/:id' do
     if !logged_in? 
       redirect :'/login' 
-    
     end 
-    # binding.pry
+    
     @sucker = Sucker.find_by_id(params[:id])    
     erb :'/sucker/show'
   end
@@ -55,26 +54,28 @@ class SuckersController < ApplicationController
 
   ## GETS: The form to edit a specific user
   get '/sucker/:id/edit' do 
-    if !logged_in?
-      redirect :'/login'
-    end
-    @sucker = current_sucker
-    if params[:id] != @sucker.id
-      # flash[:message] = "Sorry, you can only edit your own profile!"
-      redirect :'/sucker/#{@sucker.id}'
-    else
-      erb :'/sucker/edit'
-    end
+    binding.pry
+    # if !logged_in?
+    #   redirect :'/login'
+    # end
+    # @sucker = current_sucker
+    # if params[:id] != @sucker.id
+    #   # flash[:message] = "Sorry, you can only edit your own profile!"
+    #   redirect :'/sucker/#{@sucker.id}'
+    # else
+    #   erb :'/sucker/edit'
+    # end
   end
 
 
 
   ## PATCHES: updates a sucker profile. 
   patch '/sucker/:id' do 
-      @sucker = current_sucker  
-      @sucker.update(params)
-      # flash[:message] = "Successfully updated profile!"
-      redirect :'/sucker/#{@sucker.id}'
+    binding.pry
+      # @sucker = current_sucker  
+      # @sucker.update(params)
+      # # flash[:message] = "Successfully updated profile!"
+      # redirect :'/sucker/#{@sucker.id}'
   end
 
   ## DELETES: user profile,
