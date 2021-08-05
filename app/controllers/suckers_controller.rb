@@ -15,7 +15,6 @@ class SuckersController < ApplicationController
 
   #POSTS: the signup action to the DB / moves user to next 
   post '/signup' do
-  
     ##new pattern for singup w/ validation
     @sucker = Sucker.new(params[:sucker])
     if @sucker.save
