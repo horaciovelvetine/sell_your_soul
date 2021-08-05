@@ -18,7 +18,10 @@ class SuckersController < ApplicationController
     ##new pattern for singup w/ validation
     @sucker = Sucker.new(params[:sucker])
     
-    @corporation_ids = params[:sucker[:corporation_ids]]
+
+    binding.pry
+
+    @corporation_ids = params[:corporations]
     @corporation_ids.each do |identifier|
       corp = Corporation.find_by_id(identifier)
       @sucker.corporations << corp
@@ -32,6 +35,9 @@ class SuckersController < ApplicationController
     @sucker.balance = @init_payout
 
     if @sucker.save
+      binding.pry
+
+      ##this redirect is broken still, n.s.y
       session[:user_id] = @sucker.id
       redirect :'/sucker/#{@sucker.id}'
     else
