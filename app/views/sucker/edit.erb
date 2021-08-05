@@ -1,51 +1,61 @@
 <div class="container">
   <header><img src="images/Stupid Simple Logo.svg" class =img-responsive main-image" alt="Logo for SYS.io"></header>
   <div class="col-md-8 col-md-offset-2">
-    <h2>Edit Profile</h2>
+    <h2>Edit Profile</h2><br>
 
     <div class="content">
       
       <form action="/sucker/<%=@sucker.id %>" method="POST">
-        <input id="hidden" type="hidden" name="_method" value="patch">
-          <p>First Name:<input type="text" name="first_name" id="first_name" placeholder="<%= @sucker.first_name%>" required><br></p>
-          <p>Last Name:<input type="text" name="last_name" id="last_name" placeholder="<%= @sucker.last_name%>" required><br></p>
-          <p>Email:<input type="text" name="primary_email" id="primary_email" placeholder="<%= @sucker.primary_email%>" required><br></p>
-          <p>Username:<input type="text" name="username" id="username" placeholder="<%= @sucker.username%>" required><br></p>
-          <p>Password:<input type="text" name="password" id="password" placeholder="<%= @sucker.password%>" required><br></p>
+        <input id="hidden" type="hidden" name="_method" value="PATCH">
+        <h5><i>Required fields:</i></h5>
+        
+          <p>First Name:<input type="text" name="first_name" id="first_name" value="<%= @sucker.first_name%>" required><br></p>
+          <p>Last Name:<input type="text" name="last_name" id="last_name" value="<%= @sucker.last_name%>" required><br></p>
+          <p>Email:<input type="text" name="primary_email" id="primary_email" value="<%= @sucker.primary_email%>" required><br></p>
+          <p>Username:<input type="text" name="username" id="username" value="<%= @sucker.username%>" required><br></p>
+          <p>Password:<input type="text" name="password" id="password" placeholder="password" ><br></p>
           <p><i>additional fields</i><br>
-          <p>Middle Name:<input type="text" name="middle_name" id="middle_name" placeholder="<%= @sucker.middle_name%>" ><br></p>
-          <p>Maiden Name:<input type="text" name="maiden_name" id="maiden_name" placeholder="<%= @sucker.maiden_name%>" ><br></p>
-          <p>Pseudonym:</p><input type="text" name="pseudonym" id="pseudonym" placeholder="<%= @sucker.pseudonym%>" ><br></p>
-          <p>Alias:<input type="text" name="alias" id="alias" placeholder="<%= @sucker.alias%>" ><br></p>
-          <p>Cell-Phone:<input type="text" name="cell_phone_number" id="cell_phone_number" placeholder="<%= @sucker.cell_phone_number%>" ><br></p>
-          <p>Home-Phone:<input type="text" name="home_phone_number" id="home_phone_number" placeholder="<%= @sucker.home_phone_number%>" ><br></p>
-          <p>Primary Address:<input type="text" name="address_one" id="address_one" placeholder="<%= @sucker.address_one%>" ><br></p>
-          <p>Secondary Address:<input type="text" name="address_two" id="address_two" placeholder="<%= @sucker.address_two%>" ><br></p>
-          <p>P.O. Box:<input type="text" name="p_o_box" id="p_o_box" placeholder="<%= @sucker.p_o_box%>" ><br></p>
-          <p>Secondary Email:<input type="text" name="secondary_email" id="secondary_email" placeholder="<%= @sucker.secondary_email%>" ><br></p>
-          <p>Spam Email:<input type="text" name="spam_email" id="spam_email" placeholder="<%= @sucker.spam_email%>" ><br></p>
-          <p>Yearly Income:<input type="text" name="yearly_income" id="yearly_income" placeholder="<%= @sucker.yearly_income%>" ><br></p>
-          <p>Social Security Number:<input type="text" name="social_security_number" id="social_security_number" placeholder="<%= @sucker.social_security_number%>" ><br></p>
-          <p>Primary Bank:<input type="text" name="primary_bank" id="primary_bank" placeholder="<%= @sucker.primary_bank%>" ><br></p>
-          <p>Credit Score:<input type="text" name="credit_score" id="credit_score" placeholder="<%= @sucker.credit_score%>" ><br><br></p>
-          <p>Relationship Status:<input type="text" name="relationship_status" id="relationship_status" placeholder="<%= @sucker.relationship_status%>" ><br></p>
-          <p>Employment Status:<input type="text" name="employment_status" id="employment_status" placeholder="<%= @sucker.employment_status%>" ><br></p>
-          <p>Employer:<input type="text" name="employer" id="employer" placeholder="<%= @sucker.employer%>" ><br></p>
-          <p>Catch Phrase:<input type="text" name="catch_phrase" id="catch_phrase" placeholder="<%= @sucker.catch_phrase%>" ><br></p>
-          <p>Political Affiliation:<input type="text" name="political_affiliation" id="political_affiliation" placeholder="<%= @sucker.political_affiliation%>" ><br></p>
-          <p>Belief System or Religion:<input type="text" name="belief_religion" id="belief_religion" placeholder="<%= @sucker.belief_religion%>" ><br></p>
-          <p>Interests:<input type="text" name="interests" id="interests" placeholder="<%= @sucker.interests%> "><br></p>
-          <p>Additional Information:<input type="text" name="additional_details_one" id="additional_details_one" placeholder="<%= @sucker.additional_details_one%>" ><br></p>
-          <p>More Additional Information:<input type="text" name="additional_details_two" id="additional_details_two" placeholder="<%= @sucker.additional_details_two%>" ><br></p>     
+          <p>Middle Name:<input type="text" name="middle_name" id="middle_name" value="<%= @sucker.middle_name%>" ><br></p>
+          <p>Maiden Name:<input type="text" name="maiden_name" id="maiden_name" value="<%= @sucker.maiden_name%>" ><br></p>
+          <p>Pseudonym:</p><input type="text" name="pseudonym" id="pseudonym" value="<%= @sucker.pseudonym%>" ><br></p>
+          <p>Alias:<input type="text" name="alias" id="alias" value="<%= @sucker.alias%>" ><br></p>
+          <p>Cell-Phone:<input type="text" name="cell_phone_number" id="cell_phone_number" value="<%= @sucker.cell_phone_number%>" ><br></p>
+          <p>Home-Phone:<input type="text" name="home_phone_number" id="home_phone_number" value="<%= @sucker.home_phone_number%>" ><br></p>
+          <p>Primary Address:<input type="text" name="address_one" id="address_one" value="<%= @sucker.address_one%>" ><br></p>
+          <p>Secondary Address:<input type="text" name="address_two" id="address_two" value="<%= @sucker.address_two%>" ><br></p>
+          <p>P.O. Box:<input type="text" name="p_o_box" id="p_o_box" value="<%= @sucker.p_o_box%>" ><br></p>
+          <p>Secondary Email:<input type="text" name="secondary_email" id="secondary_email" value="<%= @sucker.secondary_email%>" ><br></p>
+          <p>Spam Email:<input type="text" name="spam_email" id="spam_email" value="<%= @sucker.spam_email%>" ><br></p>
+          <p>Yearly Income:<input type="text" name="yearly_income" id="yearly_income" value="<%= @sucker.yearly_income%>" ><br></p>
+          <p>Social Security Number:<input type="text" name="social_security_number" id="social_security_number" value="<%= @sucker.social_security_number%>" ><br></p>
+          <p>Primary Bank:<input type="text" name="primary_bank" id="primary_bank" value="<%= @sucker.primary_bank%>" ><br></p>
+          <p>Credit Score:<input type="text" name="credit_score" id="credit_score" value="<%= @sucker.credit_score%>" ><br><br></p>
+          <p>Relationship Status:<input type="text" name="relationship_status" id="relationship_status" value="<%= @sucker.relationship_status%>" ><br></p>
+          <p>Employment Status:<input type="text" name="employment_status" id="employment_status" value="<%= @sucker.employment_status%>" ><br></p>
+          <p>Employer:<input type="text" name="employer" id="employer" value="<%= @sucker.employer%>" ><br></p>
+          <p>Catch Phrase:<input type="text" name="catch_phrase" id="catch_phrase" value="<%= @sucker.catch_phrase%>" ><br></p>
+          <p>Political Affiliation:<input type="text" name="political_affiliation" id="political_affiliation" value="<%= @sucker.political_affiliation%>" ><br></p>
+          <p>Belief System or Religion:<input type="text" name="belief_religion" id="belief_religion" value="<%= @sucker.belief_religion%>" ><br></p>
+          <p>Interests:<input type="text" name="interests" id="interests" value="<%= @sucker.interests%> "><br></p>
+          <p>Additional Information:<input type="text" name="additional_details_one" id="additional_details_one" value="<%= @sucker.additional_details_one%>" ><br></p>
+          <p>More Additional Information:<input type="text" name="additional_details_two" id="additional_details_two" value="<%= @sucker.additional_details_two%>" ><br></p>     
 
       <br><h4>Check each box next to the company whom you would like to send your information.</h4>
       <p><i>The more you check the more you get paid</i></p>
         <% @corporations.each do |company| %>
-          <input type="checkbox" name="corporations[]" id="<%=company.id%>" value="<%=company.id%>" > <%= company.name %></input><br>
+          <ul>
+            <li>
+              <% if @corp_ids.include?(company.id) %>
+                <input type="checkbox" name="corporations[]" id="<%=company.id%>" value="<%=company.id%>" checked> <label for="<%=company.id%>"><%=company.name%></label><br>
+              <% else %>
+                <input type="checkbox" name="corporations[]" id="<%=company.id%>" value="<%=company.id%>" > <label for="<%=company.id%>"><%=company.name%></label><br>
+              <% end %>
+            </li>
+          </ul>
         <% end %><br>  
       <h6>By submitting the form below you agree to <a href="/termsandconditions">our terms of service</a></h6><br>
       
-      <input type="submit" value="Edit Account">
+      <input type="submit" value="Edit Account"><br>
     </div>
 
   <div class="sidebar">
