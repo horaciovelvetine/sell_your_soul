@@ -5,8 +5,8 @@
 
     <div class="content">
       
-      <form action="/sucker/<%=@sucker.id %>" method="POST">
-        <input id="hidden" type="hidden" name="_method" value="PATCH">
+      <form action="/sucker/<%=@sucker.id %>" method="post">
+        <input id="hidden" type="hidden" name="_method" value="patch">
         <h5><i>Required fields:</i></h5>
         
           <p>First Name:<input type="text" name="first_name" id="first_name" value="<%= @sucker.first_name%>" required><br></p>
