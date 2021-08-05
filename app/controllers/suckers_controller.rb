@@ -95,7 +95,7 @@ end
     #   @sucker.corporations.each do |corpo|
     #     @init_payout += corpo.payout_amount
     #   end
-    redirect :"/sucker/#{@sucker.id}"
+    redirect :'/sucker/#{@sucker.id}'
   end
 
   ## DELETES: user profile,
