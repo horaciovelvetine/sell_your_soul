@@ -17,6 +17,20 @@ class SuckersController < ApplicationController
   post '/signup' do
     ##new pattern for singup w/ validation
     @sucker = Sucker.new(params[:sucker])
+    
+    @corporation_ids = params[:sucker[:corporation_ids]]
+    @corporation_ids.each do |identifier|
+      corp = Corporation.find_by_id(identifier)
+      @sucker.corporations << corp
+      @init_payout = 0
+      
+      @sucker.corporations.each do |corpo|
+        @init_payout += corpo.payout_amount
+      end
+    end
+    
+    @sucker.balance = @init_payout
+
     if @sucker.save
       session[:user_id] = @sucker.id
       redirect :'/sucker/#{@sucker.id}'
@@ -24,27 +38,8 @@ class SuckersController < ApplicationController
       redirect :'/signup'
     end
 
-    @corporation_ids = params[:corporations]
-    @corporation_ids.each do |identifier|
-      corp = Corporation.find_by_id(identifier)
-      @sucker.corporations << corp
-    end
     
-    @init_payout = 0
     
-    @sucker.corporations.each do |corpo|
-      @init_payout += corpo.payout_amount
-    end
-    
-    @sucker.balance = @init_payout
-    @sucker.save
-    
-    if @sucker.id != nil    
-      session[:user_id] = @sucker.id  
-      redirect "/sucker/#{@sucker.id}"
-    else
-      redirect :'/login'
-    end
     
     ##Original version w/o nested form & correct format w/ imput validation from AR
     #   if params[:username] == "" || params[:password] == "" || params[:primary_email] == ""

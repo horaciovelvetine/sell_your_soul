@@ -43,7 +43,7 @@
         <br><h4>Check each box next to the company whom you would like to send your information.</h4>
         <p><i>The more you check the more you get paid</i></p>
           <% @corporations.each do |company| %>
-            <input type="checkbox" name="corporations[]" id="<%=company.id%>" value="<%=company.id%>" > <label for="<%=company.id%>"><%=company.name%></label><br>
+            <input type="checkbox" name="sucker[corporations[]]" id="<%=company.id%>" value="<%=company.id%>" > <label for="<%=company.id%>"><%=company.name%></label><br>
           <% end %><br>  
         <h6>By submitting the form below you agree to <a href="/termsandconditions">our terms of service</a></h6><br>
       <input type="submit" value="Create Account"><br>
