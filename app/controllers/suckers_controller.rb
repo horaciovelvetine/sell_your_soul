@@ -15,13 +15,15 @@ class SuckersController < ApplicationController
 
   #POSTS: the signup action to the DB / moves user to next 
   post '/signup' do
-    if params[:username] == "" || params[:password] == "" || params[:primary_email] == ""
-      redirect :'/signup'
-    elsif params[:username] == nil || params[:password] == nil || params[:primary_email] == nil
+  
+    ##new pattern for singup w/ validation
+    @sucker = Sucker.new(params[:sucker])
+    if @sucker.save
+      session[:user_id] = @sucker.id
+      redirect :'/sucker/#{@sucker.id}'
+    else
       redirect :'/signup'
     end
-    
-    @sucker = Sucker.new(:first_name => params["first_name"], :last_name => params["last_name"], :primary_email => params["primary_email"], :username => params["username"], :password => params["password"],:middle_name => params["middle_name"], :maiden_name => params["maiden_name"], :pseudonym => params["pseudonym"], :alias => params["alias"], :cell_phone_number => params["cell_phone_number"], :home_phone_number => params["home_phone_number"], :address_one => params["address_one"], :address_two => params["address_two"], :p_o_box => params["p_o_box"], :secondary_email => params["secondary_email"], :spam_email => params["spam_email"], :yearly_income => params["yearly_income"], :social_security_number => params["social_security_number"], :primary_bank => params["primary_bank"], :credit_score => params["credit_score"], :relationship_status => params["relationship_status"], :employment_status => params["employment_status"], :employer => params["employer"], :catch_phrase => params["catch_phrase"], :political_affiliation => params["political_affiliation"], :belief_religion => params["belief_religion"], :interests => params["interests"], :additional_details_one => params["additional_details_one"], :additional_details_two => params["additional_details_two"])
 
     @corporation_ids = params[:corporations]
     @corporation_ids.each do |identifier|
@@ -30,24 +32,33 @@ class SuckersController < ApplicationController
     end
     
     @init_payout = 0
-
+    
     @sucker.corporations.each do |corpo|
       @init_payout += corpo.payout_amount
     end
-
+    
     @sucker.balance = @init_payout
     @sucker.save
-
+    
     if @sucker.id != nil    
-        session[:user_id] = @sucker.id  
-        redirect "/sucker/#{@sucker.id}"
-      else
-        redirect :'/login'
+      session[:user_id] = @sucker.id  
+      redirect "/sucker/#{@sucker.id}"
+    else
+      redirect :'/login'
     end
-  end
-  
+    
+    ##Original version w/o nested form & correct format w/ imput validation from AR
+    #   if params[:username] == "" || params[:password] == "" || params[:primary_email] == ""
+    #     redirect :'/signup'
+    #   elsif params[:username] == nil || params[:password] == nil || params[:primary_email] == nil
+    #     redirect :'/signup'
+    #   end
+      
+    #   @sucker = Sucker.new(:first_name => params["first_name"], :last_name => params["last_name"], :primary_email => params["primary_email"], :username => params["username"], :password => params["password"],:middle_name => params["middle_name"], :maiden_name => params["maiden_name"], :pseudonym => params["pseudonym"], :alias => params["alias"], :cell_phone_number => params["cell_phone_number"], :home_phone_number => params["home_phone_number"], :address_one => params["address_one"], :address_two => params["address_two"], :p_o_box => params["p_o_box"], :secondary_email => params["secondary_email"], :spam_email => params["spam_email"], :yearly_income => params["yearly_income"], :social_security_number => params["social_security_number"], :primary_bank => params["primary_bank"], :credit_score => params["credit_score"], :relationship_status => params["relationship_status"], :employment_status => params["employment_status"], :employer => params["employer"], :catch_phrase => params["catch_phrase"], :political_affiliation => params["political_affiliation"], :belief_religion => params["belief_religion"], :interests => params["interests"], :additional_details_one => params["additional_details_one"], :additional_details_two => params["additional_details_two"])
+end
 
-  ## GETS: profile page for user.
+
+## GETS: profile page for user.
   get '/sucker/:id' do
     if !logged_in? 
       redirect :'/login' 
