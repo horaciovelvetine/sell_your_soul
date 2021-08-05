@@ -1,6 +1,6 @@
 #List of a Shitload of Companies
 corporations_list = {
-"State Farm Insurance" => {:payout_amount => 0.000 },
+"State Farm Insurance" => {:payout_amount => 0.00055 },
 "Huntington Bancshares" => {:payout_amount => 0.00067 },
 "Post Holdings" => {:payout_amount => 0.00068 },
 "Cerner" => {:payout_amount => 0.000487 },

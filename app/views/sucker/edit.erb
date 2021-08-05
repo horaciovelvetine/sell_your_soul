@@ -1,20 +1,21 @@
 <div class="container">
   <header><img src="images/Stupid Simple Logo.svg" class =img-responsive main-image" alt="Logo for SYS.io"></header>
   <div class="col-md-8 col-md-offset-2">
-    <h2>Edit Profile</h2><br>
+    <h2>Update your Information:</h2><br>
 
     <div class="content">
       
       <form action="/sucker/<%=@sucker.id %>" method="post">
         <input id="hidden" type="hidden" name="_method" value="patch">
-        <h5><i>Required fields:</i></h5>
+        <h4><i>Required fields:</i></h4><br>
+        <p>------------------------------</p>
         
           <p>First Name:<input type="text" name="sucker[first_name]" id="first_name" value="<%= @sucker.first_name%>" required><br></p>
           <p>Last Name:<input type="text" name="sucker[last_name]" id="last_name" value="<%= @sucker.last_name%>" required><br></p>
           <p>Email:<input type="text" name="sucker[primary_email]" id="primary_email" value="<%= @sucker.primary_email%>" required><br></p>
-          <p>Username:<input type="text" name="sucker[username]" id="username" value="<%= @sucker.username%>" required><br></p>
-          <p>Password:<input type="text" name="sucker[password]" id="password" placeholder="password" ><br></p>
-          <p><i>additional fields</i><br>
+          
+          <h5><i>Additional fields:</i></h5><br>
+          <p>------------------------------</p>
           <p>Middle Name:<input type="text" name="sucker[middle_name]" id="middle_name" value="<%= @sucker.middle_name%>" ><br></p>
           <p>Maiden Name:<input type="text" name="sucker[maiden_name]" id="maiden_name" value="<%= @sucker.maiden_name%>" ><br></p>
           <p>Pseudonym</p>:<input type="text" name="sucker[pseudonym]" id="pseudonym" value="<%= @sucker.pseudonym%>" ><br></p>
@@ -46,16 +47,16 @@
           <ul>
             <li>
               <% if @corp_ids.include?(company.id) %>
-                :<input type="checkbox" name="corporations[]" id="<%=company.id%>" value="<%=company.id%>" checked> <label for="<%=company.id%>"><%=company.name%></label><br>
+                <input type="checkbox" name="corporations[]" id="<%=company.id%>" value="<%=company.id%>" checked> <label for="<%=company.id%>"><%=company.name%></label><br>
               <% else %>
-                :<input type="checkbox" name="corporations[]" id="<%=company.id%>" value="<%=company.id%>" > <label for="<%=company.id%>"><%=company.name%></label><br>
+                <input type="checkbox" name="corporations[]" id="<%=company.id%>" value="<%=company.id%>" > <label for="<%=company.id%>"><%=company.name%></label><br>
               <% end %>
             </li>
           </ul>
         <% end %><br>  
       <h6>By submitting the form below you agree to <a href="/termsandconditions">our terms of service</a></h6><br>
       
-      :<input type="submit" value="Edit Account"><br>
+      <input type="submit" value="Edit Account"><br>
     </div>
 
   <div class="sidebar">

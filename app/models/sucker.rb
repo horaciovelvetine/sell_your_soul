@@ -7,8 +7,5 @@ class Sucker < ActiveRecord::Base
   validates  :password, presence: true
   validates_presence_of :first_name, :last_name, :primary_email
   
-
-  
-  
   has_secure_password
 end

@@ -17,10 +17,6 @@ class SuckersController < ApplicationController
   post '/signup' do
     ##new pattern for singup w/ validation
     @sucker = Sucker.new(params[:sucker])
-    
-
-    binding.pry
-
     @corporation_ids = params[:corporations]
     @corporation_ids.each do |identifier|
       corp = Corporation.find_by_id(identifier)
@@ -33,28 +29,16 @@ class SuckersController < ApplicationController
     end
     
     @sucker.balance = @init_payout
-
+    
     if @sucker.save
-      binding.pry
-
+      
       ##this redirect is broken still, n.s.y
       session[:user_id] = @sucker.id
+      binding.pry
       redirect :'/sucker/#{@sucker.id}'
     else
       redirect :'/signup'
     end
-
-    
-    
-    
-    ##Original version w/o nested form & correct format w/ imput validation from AR
-    #   if params[:username] == "" || params[:password] == "" || params[:primary_email] == ""
-    #     redirect :'/signup'
-    #   elsif params[:username] == nil || params[:password] == nil || params[:primary_email] == nil
-    #     redirect :'/signup'
-    #   end
-      
-    #   @sucker = Sucker.new(:first_name => params["first_name"], :last_name => params["last_name"], :primary_email => params["primary_email"], :username => params["username"], :password => params["password"],:middle_name => params["middle_name"], :maiden_name => params["maiden_name"], :pseudonym => params["pseudonym"], :alias => params["alias"], :cell_phone_number => params["cell_phone_number"], :home_phone_number => params["home_phone_number"], :address_one => params["address_one"], :address_two => params["address_two"], :p_o_box => params["p_o_box"], :secondary_email => params["secondary_email"], :spam_email => params["spam_email"], :yearly_income => params["yearly_income"], :social_security_number => params["social_security_number"], :primary_bank => params["primary_bank"], :credit_score => params["credit_score"], :relationship_status => params["relationship_status"], :employment_status => params["employment_status"], :employer => params["employer"], :catch_phrase => params["catch_phrase"], :political_affiliation => params["political_affiliation"], :belief_religion => params["belief_religion"], :interests => params["interests"], :additional_details_one => params["additional_details_one"], :additional_details_two => params["additional_details_two"])
 end
 
 
@@ -96,12 +80,22 @@ end
 
   ## PATCHES: updates a sucker profile. 
   patch '/sucker/:id' do 
-      @sucker = current_sucker  
-
-      # binding.pry
-      @sucker.update(params[:sucker])
-      @sucker.save
-      redirect :'/sucker/#{@sucker.id}'
+    
+    @sucker = current_sucker  
+    @sucker.update(params[:sucker])
+    
+    binding.pry
+    ##NEEDS TO ADD THE CORPORATION PATCH SEPERATELY
+    # @corporation_ids = params[:corporations]
+    # @corporation_ids.each do |identifier|
+    #   corp = Corporation.find_by_id(identifier)
+    #   @sucker.corporations << corp
+    #   @init_payout = 0
+      
+    #   @sucker.corporations.each do |corpo|
+    #     @init_payout += corpo.payout_amount
+    #   end
+    redirect :"/sucker/#{@sucker.id}"
   end
 
   ## DELETES: user profile,
