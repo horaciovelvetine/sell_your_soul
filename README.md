@@ -1,6 +1,6 @@
 ## Why this exists
 
-This project was built to learn the Sinatra framework, and get better aquainted with both Active Record & a M.V.C. style of building an application. This was build on the back of the Corneal gem, which you can find here (https://thebrianemory.github.io/corneal/). I've even heard rumors of an updated one built by the new Flatiron staff. 
+This project was built to learn the Sinatra framework, and get better aquainted with both Active Record & a M.V.C. architecture of building an application. This was build on the back of the Corneal gem, which you can find here (https://thebrianemory.github.io/corneal/). I've even heard rumors of an updated one built by the new Flatiron staff. 
 
 ## How this exists
 
