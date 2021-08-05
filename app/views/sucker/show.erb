@@ -17,6 +17,8 @@
             $<%= @sucker.balance%></li><br>
           <li><b>Active Partners</b>:
             <%=@sucker.corporations.all.length%></li><br>
+
+            <h5>Profile Actions</h5>
         <ul>
     </div>
 
@@ -27,8 +29,8 @@
         <li><b><a href="/corporations">Corporate Partners</a></b></li>
         <li><b><a href="/login">Login</a></b></li>
         <li><b><a href="/logout">Logout</a></b></li>
-        <li><b><a href="/sucker/<%=@sucker.id %>/edit">Edit Profile</a></b></li>
-        <li><b><a href="/sucker/<%=@sucker.id %>/delete">Delete Profile</a></b></li>
+        <%# <li><b><a href="/sucker/<%=@sucker.id %>/edit">Edit Profile</a></b></li> %>
+        <%# <li><b><a href="/sucker/<%=@sucker.id %>/delete">Delete Profile</a></b></li> %>
       </ul>
   </div>
 
