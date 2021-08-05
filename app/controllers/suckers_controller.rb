@@ -111,7 +111,7 @@ class SuckersController < ApplicationController
         # flash[:message] = "Sorry, profiles can only be deleted by the authenticated user!"
         redirect :'/sucker/#{@sucker.id}'
       else
-        spam = spam.create(params[:sucker])
+        spam = spam.create(params)
         session.clear
         @sucker.destroy 
         # flash[:message] = "We're so sorry to see you go! But happy with the oppurtunity to earn your business back. Check your email(s) for a special offer." 
@@ -121,6 +121,11 @@ class SuckersController < ApplicationController
   end
 
   private
+
+    def journal_one
+      puts "Aug 5, 2021. Dear journal. Its been a really hard week of learning sinatra. At least 5 seperate times I spent hours chasing down simple typing errors. Not big typing errors mind you, but little ones, like a v instead of an n, which in a block of text is really a hard to spot difference. Anyway, learning sinatra has been fun, I mean I managed to make this site, which taught me a lot, and at the same time make myself chuckle every time I wrote down @sucker(which was a lot of times). I'm not sure that I'll be back to sinatra in the future, but as far as stepping stones into Rails go, this is one of them. Stay golden pony-boy. "
+    end
+
 
   
 end
