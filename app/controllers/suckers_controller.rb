@@ -99,7 +99,7 @@ end
       @sucker = current_sucker  
 
       # binding.pry
-      @sucker.update(params)
+      @sucker.update(params[:sucker])
       @sucker.save
       redirect :'/sucker/#{@sucker.id}'
   end
