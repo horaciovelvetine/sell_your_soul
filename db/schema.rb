@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2021_08_02_194014) do
     t.string "home_phone_number"
     t.string "address_one"
     t.string "address_two"
-    t.string "P_O_Box"
+    t.string "p_o_box"
     t.string "primary_email"
     t.string "secondary_email"
     t.string "spam_email"
