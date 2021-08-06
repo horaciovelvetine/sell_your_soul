@@ -18,7 +18,12 @@
             $<%= @sucker.balance%></li><br>
           <li><b>Active Partners</b>:
             <%=@sucker.corporations.all.length%></li><br>
-        <ul>
+        <ul><br>
+
+        <form action="/sucker/<%= @sucker.id %>/delete" method="POST">
+        <input type="hidden" name="_method" id="hidden" value="DELETE">
+        <input type="submit" value="Delete Profile" id="Delete Profile" name="Delete Profile">
+        <br><br>
     </div>
   </div>
 </div>
