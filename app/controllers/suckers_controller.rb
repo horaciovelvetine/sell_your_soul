@@ -40,12 +40,18 @@ class SuckersController < ApplicationController
       redirect "/signup"
     end
   end
+  get '/profile' do
+    if !logged_in? 
+      redirect "/login"
+    end
 
+    redirect "/sucker/:id"
+  end
 
 ## GETS: profile page for user.
   get '/sucker/:id' do
     if !logged_in? 
-      redirect :'/login' 
+      redirect "/login"
     end 
     
     @sucker = current_sucker
