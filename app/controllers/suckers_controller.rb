@@ -9,13 +9,13 @@ class SuckersController < ApplicationController
       redirect "/suckers/#{@sucker.id}"
     else  
       @corporations = Corporation.all
-      erb "/sucker/create"
+      erb :'/sucker/create'
     end 
   end 
 
   #POSTS: the signup action to the DB / moves user to next 
   post '/signup' do
-    ##new pattern for singup w/ validation
+    ##new pattern singup w/ validation
     @sucker = Sucker.new(params[:sucker])
     @corporation_ids = params[:corporations]
     @corporation_ids.each do |identifier|
@@ -39,7 +39,7 @@ class SuckersController < ApplicationController
     else
       redirect "/signup"
     end
-end
+  end
 
 
 ## GETS: profile page for user.
@@ -49,7 +49,7 @@ end
     end 
     
     @sucker = current_sucker
-    erb "/sucker/show"
+    erb :'/sucker/show'
   end
 
 
@@ -72,7 +72,7 @@ end
       redirect "/suckers/#{@sucker.id}"
     end
     
-    erb "/sucker/edit"
+    erb :'/sucker/edit'
 
   end
 
@@ -96,7 +96,7 @@ end
 
       binding.pry
       
-    redirect "/suckers/#{@sucker.id}"
+    redirect "/sucker/#{@sucker.id}"
   end
 
   ## DELETES: user profile,
