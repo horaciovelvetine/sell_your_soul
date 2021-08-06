@@ -18,7 +18,7 @@ class ApplicationController < Sinatra::Base
       @sucker = current_sucker
       redirect "/sucker/#{@sucker.id}"
     end
-    erb "index"
+    erb :index
   end
 
   ## GETS the login page if not logged_in? already
