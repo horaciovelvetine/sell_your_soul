@@ -37,7 +37,7 @@ class SuckersController < ApplicationController
       binding.pry
       redirect "/sucker/#{@sucker.id}"
     else
-      redirect :'/signup'
+      redirect "/signup"
     end
 end
 
