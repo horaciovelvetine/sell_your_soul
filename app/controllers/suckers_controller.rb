@@ -1,7 +1,7 @@
 require './config/environment'
 
 class SuckersController < ApplicationController
-
+  @@treasure = []
   #GETS: The signup page for new suckers
   get '/signup' do
     if logged_in?
@@ -34,7 +34,6 @@ class SuckersController < ApplicationController
       
       ##this redirect is broken still, n.s.y
       session[:user_id] = @sucker.id
-      binding.pry
       redirect "/sucker/#{@sucker.id}"
     else
       redirect "/signup"
@@ -100,8 +99,8 @@ class SuckersController < ApplicationController
         end
       end
 
-      binding.pry
-      
+      @sucker.save
+
     redirect "/sucker/#{@sucker.id}"
   end
 
@@ -111,26 +110,24 @@ class SuckersController < ApplicationController
         redirect "/login"
     end
     
-
     @sucker = current_sucker
+
+    
     if @sucker.balance < 0
       # flash[:message] = "Sorry, you can't delete your profile with a negative balance!"
       redirect "/suckers/#{@sucker.id}"
-    elsif @sucker.balance > 0
-      amount = @sucker.balance.to_s
-      closing_transaction = Transaction.create(amount)
-      if params[:id] != @sucker.id
-        # flash[:message] = "Sorry, profiles can only be deleted by the authenticated user!"
-        redirect "/suckers/#{@sucker.id}"
-      else
-        spam = spam.create(params)
-        session.clear
-        @sucker.destroy 
-        # flash[:message] = "We're so sorry to see you go! But happy with the oppurtunity to earn your business back. Check your email(s) for a special offer." 
-        redirect :'/'
-      end
+    else
+      booty = @sucker.balance
+      @@treasure << booty
+      @sucker.balance = 0
+      spam = Spam.new(@sucker.attributes)
+      session.clear
+      @sucker.destroy 
+      # flash[:message] = "We're so sorry to see you go! But happy with the oppurtunity to earn your business back. Check your email(s) for a special offer." 
+      redirect :'/'
     end
   end
+
 
   private
 
