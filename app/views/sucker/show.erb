@@ -3,6 +3,7 @@
   <div class="col-md-8 col-md-offset-2">
     <h2>Dashboard for:</h2>
     <h4>Username: <%=@sucker.username%><h4><br>
+    <%= erb :"_navigation" %><br>
     
     <div class="content">
       <h4>Welcome!</h4>
@@ -17,8 +18,6 @@
             $<%= @sucker.balance%></li><br>
           <li><b>Active Partners</b>:
             <%=@sucker.corporations.all.length%></li><br>
-
-            <h5>Profile Actions</h5>
         <ul>
     </div>
   </div>
