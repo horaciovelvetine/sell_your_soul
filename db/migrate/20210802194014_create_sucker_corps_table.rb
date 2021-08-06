@@ -1,4 +1,4 @@
-class CreateSuckerCorps < ActiveRecord::Migration[6.1]
+class CreateSuckerCorpsTable < ActiveRecord::Migration[6.1]
   def change
     create_table :sucker_corps do |t|
       t.integer :sucker_id

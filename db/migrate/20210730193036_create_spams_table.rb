@@ -1,6 +1,6 @@
-class CreateSpamTable < ActiveRecord::Migration[6.1]
+class CreateSpamsTable < ActiveRecord::Migration[6.1]
   def change
-        create_table :spam do |t|
+        create_table :spams do |t|
       ##NAMES
       t.string "first_name"
       t.string "middle_name"
