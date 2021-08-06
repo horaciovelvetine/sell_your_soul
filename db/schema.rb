@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_08_02_194014) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "spam", force: :cascade do |t|
+  create_table "spams", force: :cascade do |t|
     t.string "first_name"
     t.string "middle_name"
     t.string "last_name"
@@ -94,11 +94,6 @@ ActiveRecord::Schema.define(version: 2021_08_02_194014) do
     t.float "balance"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "transactions", force: :cascade do |t|
-    t.float "amount"
-    t.string "transaction_id"
   end
 
 end
