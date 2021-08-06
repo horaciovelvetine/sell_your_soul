@@ -6,7 +6,7 @@ class CorporationsController < ApplicationController
   get "/corporations" do
     @corporations = Corporation.all
     @sucker = current_sucker
-    erb :'/corporation/index'
+    erb "/corporation/index"
   end
 
 

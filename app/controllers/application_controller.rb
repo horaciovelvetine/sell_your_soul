@@ -16,16 +16,16 @@ class ApplicationController < Sinatra::Base
   get "/" do
     if logged_in?
       @sucker = current_sucker
-      redirect :'/sucker/#{@sucker.id}'
+      redirect "/sucker/#{@sucker.id}"
     end
-    erb :'index'
+    erb "index"
   end
 
   ## GETS the login page if not logged_in? already
   get '/login' do
     if logged_in?
       @sucker = current_sucker 
-      redirect :'/sucker/#{@sucker.id}'
+      redirect "/sucker/#{@sucker.id}"
     else  
       erb :'sucker/login'
     end 
@@ -35,9 +35,9 @@ class ApplicationController < Sinatra::Base
   get '/logout' do
     if logged_in?
       session.destroy
-      redirect to :'/sucker/login'
+      redirect to "/sucker/login"
     else
-      redirect to :'/'
+      redirect to "/"
     end
   end
 
@@ -51,7 +51,7 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = @sucker.id 
       redirect :'/sucker/:id'
     else 
-      redirect :'/sucker/login'
+      redirect "/sucker/login"
     end
     
   end

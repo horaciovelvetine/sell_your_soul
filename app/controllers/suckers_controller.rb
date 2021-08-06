@@ -6,10 +6,10 @@ class SuckersController < ApplicationController
   get '/signup' do
     if logged_in?
       @sucker = current_sucker 
-      redirect :'/sucker/#{@sucker.id}'
+      redirect "/suckers/#{@sucker.id}"
     else  
       @corporations = Corporation.all
-      erb :'/sucker/create'
+      erb "/sucker/create"
     end 
   end 
 
@@ -35,7 +35,7 @@ class SuckersController < ApplicationController
       ##this redirect is broken still, n.s.y
       session[:user_id] = @sucker.id
       binding.pry
-      redirect :"/sucker/#{@sucker.id}"
+      redirect "/sucker/#{@sucker.id}"
     else
       redirect :'/signup'
     end
@@ -49,14 +49,14 @@ end
     end 
     
     @sucker = current_sucker
-    erb :'/sucker/show'
+    erb "/sucker/show"
   end
 
 
   ## GETS: The form to edit a specific user
   get '/sucker/:id/edit' do 
     if !logged_in?
-      redirect :'/login' 
+      redirect "/login"
     end 
     
     @sucker = current_sucker
@@ -69,10 +69,10 @@ end
 
 
     if session[:user_id] != @sucker.id
-      redirect :'/sucker/#{@sucker.id}'
+      redirect "/suckers/#{@sucker.id}"
     end
     
-    erb :'/sucker/edit'
+    erb "/sucker/edit"
 
   end
 
@@ -96,26 +96,26 @@ end
 
       binding.pry
       
-    redirect :'/sucker/#{@sucker.id}'
+    redirect "/suckers/#{@sucker.id}"
   end
 
   ## DELETES: user profile,
   delete '/sucker/:id/delete' do
     if !logged_in?
-        redirect :'/login'
+        redirect "/login"
     end
     
 
     @sucker = current_sucker
     if @sucker.balance < 0
       # flash[:message] = "Sorry, you can't delete your profile with a negative balance!"
-      redirect :'/sucker/#{@sucker.id}'
+      redirect "/suckers/#{@sucker.id}"
     elsif @sucker.balance > 0
       amount = @sucker.balance.to_s
       closing_transaction = Transaction.create(amount)
       if params[:id] != @sucker.id
         # flash[:message] = "Sorry, profiles can only be deleted by the authenticated user!"
-        redirect :'/sucker/#{@sucker.id}'
+        redirect "/suckers/#{@sucker.id}"
       else
         spam = spam.create(params)
         session.clear
