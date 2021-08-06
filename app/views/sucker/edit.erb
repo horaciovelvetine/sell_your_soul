@@ -7,12 +7,14 @@
       
       <form action="/sucker/<%=@sucker.id %>" method="post">
         <input id="hidden" type="hidden" name="_method" value="patch">
-        <h4><i>Required fields:</i></h4><br>
+        <h4><i> fields:</i></h4><br>
         <p>------------------------------</p>
         
-          <p>First Name:<input type="text" name="sucker[first_name]" id="first_name" value="<%= @sucker.first_name%>" required><br></p>
-          <p>Last Name:<input type="text" name="sucker[last_name]" id="last_name" value="<%= @sucker.last_name%>" required><br></p>
-          <p>Email:<input type="text" name="sucker[primary_email]" id="primary_email" value="<%= @sucker.primary_email%>" required><br></p>
+          <p>First Name:<input type="text" name="sucker[first_name]" id="first_name" value="<%= @sucker.first_name%>" ><br></p>
+          <p>Last Name:<input type="text" name="sucker[last_name]" id="last_name" value="<%= @sucker.last_name%>" ><br></p>
+          <p>Email:<input type="text" name="sucker[primary_email]" id="primary_email" value="<%= @sucker.primary_email%>" ><br></p>
+          <input type="hidden" name="sucker[username]" id="username" value="<%= @sucker.username%>" >
+          <input type="hidden" name="sucker[password]" id="password" value="<%= @sucker.password_digest%>" >
           
           <h5><i>Additional fields:</i></h5><br>
           <p>------------------------------</p>

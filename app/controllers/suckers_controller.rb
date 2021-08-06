@@ -35,7 +35,7 @@ class SuckersController < ApplicationController
       ##this redirect is broken still, n.s.y
       session[:user_id] = @sucker.id
       binding.pry
-      redirect :'/sucker/#{@sucker.id}'
+      redirect :"/sucker/#{@sucker.id}"
     else
       redirect :'/signup'
     end
@@ -83,18 +83,19 @@ end
     
     @sucker = current_sucker  
     @sucker.update(params[:sucker])
-    
-    binding.pry
+
     ##NEEDS TO ADD THE CORPORATION PATCH SEPERATELY
-    # @corporation_ids = params[:corporations]
-    # @corporation_ids.each do |identifier|
-    #   corp = Corporation.find_by_id(identifier)
-    #   @sucker.corporations << corp
-    #   @init_payout = 0
+    @corporation_ids = params[:corporations]
+    @corporation_ids.each do |identifier|
+      corp = Corporation.find_by_id(identifier)
+        if !@sucker.corporations.include?(corp)
+          @sucker.corporations << corp
+          @sucker.balance += corp.payout_amount
+        end
+      end
+
+      binding.pry
       
-    #   @sucker.corporations.each do |corpo|
-    #     @init_payout += corpo.payout_amount
-    #   end
     redirect :'/sucker/#{@sucker.id}'
   end
 
