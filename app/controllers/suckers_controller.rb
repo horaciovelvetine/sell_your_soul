@@ -31,14 +31,14 @@ class SuckersController < ApplicationController
     @sucker.balance = @init_payout
     
     if @sucker.save
-      
-      ##this redirect is broken still, n.s.y
       session[:user_id] = @sucker.id
       redirect "/sucker/#{@sucker.id}"
     else
       redirect "/signup"
     end
   end
+
+  
   get '/profile' do
     if !logged_in? 
       redirect "/login"
