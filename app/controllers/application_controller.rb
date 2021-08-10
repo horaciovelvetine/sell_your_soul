@@ -49,8 +49,9 @@ class ApplicationController < Sinatra::Base
     
     if @sucker && @sucker.authenticate(params[:password])
       session[:user_id] = @sucker.id 
-      redirect :'/sucker/:id'
+      redirect "/sucker/:id"
     else 
+
       redirect "/sucker/login"
     end
     
